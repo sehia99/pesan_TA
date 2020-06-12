@@ -11,7 +11,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">PEMESANAN LULASARI</div>
+        <div class="sidebar-brand-text mx-3">ADMIN</div>
       </a>
 
       <!-- Divider -->
@@ -19,30 +19,25 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php echo base_url('admin/dashboard_admin'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        KATEGORI
-      </div>
+      
 
        <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-french-fries"></i>
-          <span>Makanan</span></a>
+        <a class="nav-link" href="<?php echo base_url('admin/data_makmin'); ?>">
+          <i class="fas fa-fw fa-database"></i>
+          <span>Makanan dan Minuman</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-glass-citrus"></i>
-          <span>Minuman</span></a>
+        <a class="nav-link" href="<?php echo base_url('admin/invoices'); ?>">
+          <i class="fas fa-fw fa-file-invoice"></i>
+          <span>Invoices</span></a>
       </li>
 
       <!-- Divider -->
@@ -105,15 +100,8 @@
               </div>
             </li>
 
-           <div class="navbar">
-            <ul class="nav navbar-nav navbar-right">
-            <li>
-            <?php $keranjang='Keranjang Makanan: '.$this->cart->total_items().' item'; ?>
-            <?php echo anchor('dashboard/detail_keranjang', $keranjang); ?>
-            </li>
-            </ul>
-           </div>
            
+
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
