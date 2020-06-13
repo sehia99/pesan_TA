@@ -29,4 +29,12 @@ class Model_makmin extends CI_Model{
             return array();
         }
     }
+    public function detail_makmin($id_makmin){
+        $result = $this->db->where('id_makmin', $id_makmin)->get('tb_makmin');
+        if($result->num_rows()>0){
+            return $result->result();
+        }else{
+            return false;
+        }
+    }
 }

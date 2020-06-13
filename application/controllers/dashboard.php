@@ -40,10 +40,23 @@
         }
 
         public function proses_pesanan(){
-            $this->cart->destroy();
+            $is_processed = $this->model_invoice->index();
+            if($is_processed){
+                $this->cart->destroy();
+                $this->load->view('templates/header');
+                $this->load->view('templates/sidebar');
+                $this->load->view('proses_pesanan');
+                $this->load->view('templates/footer');
+            }else{
+                echo "Maaf, Pesanan Anda Gagal!";
+            }
+            
+        }
+        public function detail($id_makmin){
+            $data['makmin'] = $this->model_makmin->detail_makmin($id_makmin);
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
-            $this->load->view('proses_pesanan');
+            $this->load->view('detail_makmin', $data);
             $this->load->view('templates/footer');
         }
     }
