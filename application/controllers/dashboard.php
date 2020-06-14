@@ -1,13 +1,22 @@
 <?php
 
     class Dashboard extends CI_Controller{
-        public function index(){
-            $data['makmin']=$this->model_makmin->tampil_data()->result();
-            $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
-            $this->load->view('dashboard', $data);
-            $this->load->view('templates/footer');
+        public function __construct(){
+            parent::__construct();
+            if($this->session->userdata('role_id') !='2'){
+                $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Anda Belum Login</strong>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>');
+            redirect('auth/login');
+            }#elseif($this->session->userdata('role_id') =='1'){
+              #  redirect('admin/dashboard_admin');
+            #}
         }
+
+        
         public function tambah_ke_keranjang($id){
             $makmin = $this->model_makmin->find($id);
             $data = array(
@@ -17,7 +26,7 @@
                 'name'  =>$makmin->nama_makmin
             );
             $this->cart->insert($data);
-            redirect('dashboard');
+            redirect('welcome');
         }
 
         public function detail_keranjang(){
@@ -29,7 +38,7 @@
 
         public function hapus_keranjang(){
             $this->cart->destroy();
-            redirect('dashboard/index');
+            redirect('welcome');
         }
 
         public function pembayaran(){
