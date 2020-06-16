@@ -27,6 +27,9 @@ class Auth extends CI_Controller{
                 $this->session->set_userdata('username', $auth->username);
                 $this->session->set_userdata('role_id', $auth->role_id);
                 $this->session->set_userdata('gambar', $auth->gambar);
+                $this->session->set_userdata('nama', $auth->nama);
+                $this->session->set_userdata('alamat', $auth->alamat);
+                $this->session->set_userdata('no_tlp', $auth->no_tlp);
 
                 switch($auth->role_id){
                     case 1 :    redirect('admin/dashboard_admin');

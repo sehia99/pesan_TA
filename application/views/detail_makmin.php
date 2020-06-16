@@ -25,7 +25,7 @@
             </tr>
             </table>
             <?php echo anchor('dashboard/tambah_ke_keranjang/'.$makmin->id_makmin, '<div class="btn btn-primary btn-sm">Tambah Ke Keranjang</div>') ?>
-            <?php echo anchor('dashboard/index', '<div class="btn btn-danger btn-sm">Kembali</div>') ?>
+            <?php echo anchor('welcome', '<div class="btn btn-danger btn-sm">Kembali</div>') ?>
             </div>
         </div>
 <?php endforeach; ?>

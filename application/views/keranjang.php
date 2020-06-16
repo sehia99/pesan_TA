@@ -27,6 +27,6 @@ foreach($this->cart->contents() as $item):
 <div align="right">
 <a href="<?php echo base_url('dashboard/hapus_keranjang')  ?>"><div class="btn btn-sm btn-danger">Hapus Keranjang</div></a>
 <a href="<?php echo base_url('dashboard/index')  ?>"><div class="btn btn-sm btn-primary">Lanjut Belanja</div></a>
-<a href="<?php echo base_url('dashboard/pembayaran')  ?>"><div class="btn btn-sm btn-success">Pembayaran</div></a>
+<a href="<?php echo base_url('dashboard/proses_pesanan')  ?>"><div class="btn btn-sm btn-success">Pesan</div></a>
 </div>
 </div>
