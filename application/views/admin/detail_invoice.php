@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mb-3">
 <h4>Detail Pesanan <div class="btn btn-sm btn-success">No. Invoice: <?php echo $invoice->id; ?></div></h4>
 
 <table class="table table-bordered table-hover table-striped">
@@ -27,7 +27,43 @@ foreach($pesanan as $pesanan) :
 <tr>
 <td colspan="4" align="right">Total</td>
 <td align="right">Rp. <?php echo number_format($total, 0,',','.') ?></td>
+
 </tr>
+<?php if($cek == FALSE){ ?>
+    <div class="btn btn-sm btn-danger mb-3">Pesanan Belum Dibayar</div>
+<?php }else{foreach($pembayaran as $byr) : ?>
+<tr>
+<td>Confirmasi Pembayaran</td>
+</tr>
+<tr>
+<td>Nama Pengirim</td>
+<td><?php echo $byr->nama_peng ?></td>
+</tr>
+<tr>
+<td>No. Pengirim</td>
+<td><?php echo $byr->no_peng ?></td>
+</tr>
+<tr>
+<td>Bukti Pembayaran</td>
+<td><img src="<?php echo base_url().'uploads/pembayaran/'.$byr->gambar ?>"></td>
+</tr>
+<tr>
+<td>Tanggal Pembayaran</td>
+<td><?php echo $byr->tgl_dibayar ?></td>
+</tr>
+<?php endforeach; ?>
+
+<?php };?>
+    
 </table>
+<div align="right">
 <a href="<?php echo base_url('admin/invoice/index') ?>"><div class="btn btn-sm btn-primary">Kembali</div></a>
+<?php if($cek == FALSE){ ?>
+    
+<?php }else{if($invoice->confirm == 'confirm'){?>
+<div class="btn btn-sm btn-success">Pembayaran Telah Dikonfirmasi, Silahkan Buat Pesanan!</div>
+<?php }else{?>
+<a href="<?php echo base_url('admin/invoice/confirm_bayar').'/'.$invoice->id ?>"><div class="btn btn-success btn-sm">Confirmasi Bayar</div></a>
+<?php }};?>
+</div>
 </div>

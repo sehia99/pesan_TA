@@ -54,11 +54,14 @@ foreach($pesanan as $pesanan) :
 
 </div>
 <div align="right">
+<a href="<?php echo base_url('user/pesanan') ?>"><div class="btn btn-primary btn-sm">Kembali</div></a>
+<a href="<?php echo base_url('user/pesanan/batal_pesan').'/'.$id_invoice->id ?>"><div class="btn btn-danger btn-sm">Batal Pesan</div></a>
 <?php if($invoice->confirm != 'confirm'){ ?>
     <a href="<?php echo base_url().'user/pembayaran/index/'.$id_invoice->id ?>"><div class="btn btn-success btn-sm">Bayar</div></a>
 <?php }else{ ?>
-    <div class="btn btn-success btn-sm">Pesanan Anda Akan Segera Datang</div>
+    <div class="btn btn-success btn-sm">Pembayaran Dikonfirmasi, Pesanan Anda Akan Segera Datang</div>
 <?php }; ?>
+
 </div>
 </div>
 </div>

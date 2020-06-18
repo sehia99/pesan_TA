@@ -25,6 +25,14 @@
                   <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Anda">
                   <?php echo form_error('email', '<div class="text-danger small ml-2">*','</div>') ?>
                 </div>
+                <div class="form-group">
+                  <input type="number" name="no.tlp" class="form-control form-control-user" id="exampleInputEmail" placeholder="No. Telephone Anda">
+                  <?php echo form_error('no.tlp', '<div class="text-danger small ml-2">*','</div>') ?>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="alamat" class="form-control form-control-user" id="exampleInputEmail" placeholder="Alamat Anda">
+                  <?php echo form_error('alamat', '<div class="text-danger small ml-2">*','</div>') ?>
+                </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="password" name="password_1" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">

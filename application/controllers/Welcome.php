@@ -25,4 +25,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('dashboard', $data);
 		$this->load->view('templates/footer');
 	}
+	public function detail($id_makmin){
+		$data['makmin'] = $this->model_makmin->detail_makmin($id_makmin);
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('detail_makmin', $data);
+		$this->load->view('templates/footer');
+	}
 }

@@ -33,7 +33,7 @@
                 <p class="card-text mb-2"><?php echo $makmin->keterangan ?></p>
                 <span class="badge badge-pill badge-success mb-3">Rp. <?php echo number_format($makmin->harga, 0,',','.') ?></span><br>
                 <?php echo anchor('dashboard/tambah_ke_keranjang/'.$makmin->id_makmin, '<div class="btn btn-primary btn-sm">Tambah Ke Keranjang</div>') ?>
-                <?php echo anchor('dashboard/detail/'.$makmin->id_makmin, '<div class="btn btn-success btn-sm">Detail</div>') ?>
+                <?php echo anchor('welcome/detail/'.$makmin->id_makmin, '<div class="btn btn-success btn-sm">Detail</div>') ?>
             </div>
         </div>
     <?php endforeach; ?>

@@ -33,7 +33,8 @@ class Model_invoice extends CI_Model{
         return TRUE;
     }
     public function tampil_data(){
-        $result = $this->db->get('tb_invoice');
+        $this->db->select('tb_invoice.*, tb_pembayaran.id_invoice')->from('tb_invoice')->join('tb_pembayaran', 'tb_pembayaran.id_invoice=tb_invoice.id', 'left');
+        $result = $this->db->get();
         if($result->num_rows() >0){
             return $result->result();
         }else{
@@ -74,5 +75,32 @@ class Model_invoice extends CI_Model{
         }else{
             return false;
         }
+    }
+
+    public function data_pembayaran($id_invoice){
+        $result = $this->db->where('id_invoice', $id_invoice)->get('tb_pembayaran');
+        if($result->num_rows() >0){
+            return $result->result();
+        }else{
+            return false;
+        }
+    }
+    public function ambil_id_bayar($id_invoice){
+        $result = $this->db->where('id_invoice', $id_invoice)->limit(1)->get('tb_pembayaran');
+        if($result->num_rows() > 0){
+            return $result->row();
+        }else{
+            return false;
+        }
+    }
+
+    public function confirm_bayar($where, $data, $table){
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
+
+    public function batal_pesan($where,$data, $table){
+        $this->db->where($where);
+        $this->db->update($table, $data);
     }
 }
