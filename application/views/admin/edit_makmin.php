@@ -20,7 +20,8 @@
     <label>Harga</label>
     <input type="text" name="harga" class="form-control" value="<?php echo $makmin->harga; ?>">
     </div>
-    <button type="submit" class="btn btn-primary btn-sm mt-3">Simpan</button>
+    <?php echo anchor('admin/data_makmin/index', '<div class="btn btn-sm btn-danger mt-3">Kembali</div>') ?>
+    <button type="submit" class="btn btn-primary btn-sm mt-3 ml-2">Simpan</button>
 </form>
 <?php endforeach; ?>
 </div>

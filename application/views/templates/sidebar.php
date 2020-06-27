@@ -8,8 +8,8 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('welcome/index'); ?>">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+        <img src="<?php echo base_url().'/uploads/lulasaribg.png' ?>" alt="" class="img-fluid rounded">
         </div>
         <div class="sidebar-brand-text mx-3">PEMESANAN LULASARI</div>
       </a>
@@ -108,7 +108,7 @@
            <div class="navbar">
             <ul class="nav navbar-nav navbar-right">
             <li>
-            <?php $keranjang='Keranjang Makanan: '.$this->cart->total_items().' item'; ?>
+            <?php $keranjang='<i class="fas fa-shopping-cart"></i> Keranjang Makanan: '.$this->cart->total_items().' item'; ?>
             <?php echo anchor('dashboard/detail_keranjang', $keranjang); ?>
             </li>
             </ul>
@@ -160,12 +160,13 @@
             </ul>
 
           </ul>
-           </div>
+         
            
-            
-
+    
  </nav>
+ 
 
+         
  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

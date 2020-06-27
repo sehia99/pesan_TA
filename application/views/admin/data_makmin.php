@@ -17,7 +17,7 @@
     <td><?php echo $makmin->keterangan ?></td>
     <td><?php echo $makmin->kategori ?></td>
     <td><?php echo $makmin->harga ?></td>
-    <td><div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div></td>
+    <td><?php echo anchor('admin/data_makmin/detail_makmin/'.$makmin->id_makmin,'<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?></td>
     <td><?php echo anchor('admin/data_makmin/edit/'.$makmin->id_makmin,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
     <td><?php echo anchor('admin/data_makmin/hapus/'.$makmin->id_makmin,'<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>')?></td>
     <?php endforeach; ?>
@@ -66,3 +66,6 @@
     </div>
     </div>
 </div>
+
+
+

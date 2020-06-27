@@ -84,4 +84,12 @@ class Data_makmin extends CI_Controller{
         $this->model_makmin->hapus_data($where, 'tb_makmin');
         redirect('admin/data_makmin/index');
     }
+
+    public function detail_makmin($id){
+       $data['detail']= $this->model_makmin->detail_makmin($id);
+       $this->load->view('templates_admin/header');
+       $this->load->view('templates_admin/sidebar');
+       $this->load->view('admin/detail_makmin', $data);
+       $this->load->view('templates_admin/footer');
+    }
 }
