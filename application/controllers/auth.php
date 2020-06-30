@@ -32,7 +32,7 @@ class Auth extends CI_Controller{
                 $this->session->set_userdata('no_tlp', $auth->no_tlp);
 
                 switch($auth->role_id){
-                    case 1 :    redirect('admin/dashboard_admin');
+                    case 1 :    redirect('admin/invoice');
                     break;
                     case 2 :    redirect('welcome');
                     break;

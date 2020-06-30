@@ -7,7 +7,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('welcome'); ?>">
         <div class="sidebar-brand-icon">
         <img src="<?php echo base_url().'/uploads/lulasaribg.png' ?>" alt="" class="img-fluid rounded">
         </div>
@@ -16,18 +16,27 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
+      <li class="nav-item">
+          <span class="text-white ml-3">Menu</span>
+      </li>
+      <hr class="sidebar-divider my-0">
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('admin/dashboard_admin'); ?>">
+        <a class="nav-link" href="<?php echo base_url('welcome'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Home</span></a>
       </li>
 
       <!-- Divider -->
       
 
        <!-- Nav Item - Tables -->
+       <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/profil'); ?>">
+          <i class="fas fa-fw fa-database"></i>
+          <span>Profil</span></a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('admin/data_makmin'); ?>">
           <i class="fas fa-fw fa-database"></i>
@@ -38,6 +47,12 @@
         <a class="nav-link" href="<?php echo base_url('admin/invoice'); ?>">
           <i class="fas fa-fw fa-file-invoice"></i>
           <span>Invoices</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/user'); ?>">
+          <i class="fas fa-fw fa-database"></i>
+          <span>List User</span></a>
       </li>
 
       <!-- Divider -->
@@ -65,7 +80,7 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
+          <!-- Topbar Search 
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -76,7 +91,7 @@
               </div>
             </div>
           </form>
-
+-->
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
@@ -85,7 +100,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
               </a>
-              <!-- Dropdown - Messages -->
+             <!--  Dropdown - Messages -->
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
@@ -123,7 +138,7 @@
               </a>
               <?php };?>
               <?php if($this->session->userdata('role_id')== 1){ ?>
-              <a class="dropdown-item" href="<?php echo base_url('admin/dashboard_admin') ?>">
+              <a class="dropdown-item" href="<?php echo base_url('admin/invoice') ?>">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                 Dashboard
               </a>

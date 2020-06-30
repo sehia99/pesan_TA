@@ -11,8 +11,8 @@
             <i class="fa fa-bars"></i>
           </button>
           <a class="navbar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('welcome'); ?>">
-        <div class="navbar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div class="navbar-brand-icon">
+        <img src="<?php //echo base_url().'/uploads/lulasaribg.png' ?>" alt="" class="img-fluid rounded">
         </div>
         <div class="navbar-brand-text mx-3">PEMESANAN LULASARI</div>
       </a>

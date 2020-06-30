@@ -133,7 +133,7 @@
               </a>
               <?php };?>
               <?php if($this->session->userdata('role_id')== 1){ ?>
-              <a class="dropdown-item" href="<?php echo base_url('admin/dashboard_admin') ?>">
+              <a class="dropdown-item" href="<?php echo base_url('admin/invoice') ?>">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                 Dashboard
               </a>

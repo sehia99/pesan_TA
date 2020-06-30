@@ -1,6 +1,6 @@
 <div class="container-fluid">
 <h5><i class="fas fa-edit mb-3"></i>EDIT PASSWORD</h5>
-<form action="<?php echo base_url().'user/profil/ganti_password' ?>" method="post">
+<form action="<?php echo base_url().'admin/profil/ganti_password' ?>" method="post">
     <div class="form-group">
     <label>Password Baru</label>
     <input type="password" name="password_1" class="form-control">

@@ -5,7 +5,7 @@ class Dashboard_admin extends CI_Controller{
         parent::__construct();
         if($this->session->userdata('role_id') !='1'){
             $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Anda Belum Login</strong>
+            <strong>Anda Belum Login Sebagai Admin</strong>
             <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

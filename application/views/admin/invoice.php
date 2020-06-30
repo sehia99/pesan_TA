@@ -23,7 +23,7 @@
 <?php }elseif($invoice->confirm == 'confirm'){ ?>
     <td><div class="btn btn-sm btn-success">Pesanan Sudah Dibayar</div></td>
 <?php }elseif($invoice->id_invoice){ ?>
-    <td><div class="btn btn-sm btn-success">Pembayar Perlu Konfirmasi</div></td>
+    <td><div class="btn btn-sm btn-success">Perlu Konfirmasi</div></td>
 <?php }else{ ?>
     <td><div class="btn btn-sm btn-danger">Pesanan Belum Dibayar</div></td>
 <?php };?>
