@@ -19,7 +19,7 @@
     <td><?php echo $makmin->harga ?></td>
     <td><?php echo anchor('admin/data_makmin/detail_makmin/'.$makmin->id_makmin,'<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?></td>
     <td><?php echo anchor('admin/data_makmin/edit/'.$makmin->id_makmin,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
-    <td><?php echo anchor('admin/data_makmin/hapus/'.$makmin->id_makmin,'<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>')?></td>
+    <td><button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_modal"><i class="fa fa-trash"></i></button></td>
     <?php endforeach; ?>
     </tr>
 
@@ -37,19 +37,22 @@
     <form action="<?php echo base_url().'/admin/data_makmin/tambah_aksi';  ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label>Nama Makanan/Minuman</label>
-        <input type="text" name="nama_makmin" class="form-control">
+        <input type="text" name="nama_makmin" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Keterangan</label>
-        <input type="text" name="keterangan" class="form-control">
+        <input type="text" name="keterangan" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Kategori</label>
-        <input type="text" name="kategori" class="form-control">
+        <select name="kategori" class="form-control" >
+            <option value="Makanan">Makanan</option>
+            <option value="Minuman">Minuman</option>
+        </select>
     </div>
     <div class="form-group">
         <label>Harga</label>
-        <input type="text" name="harga" class="form-control">
+        <input type="number" name="harga" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Gambar</label><br>
@@ -67,5 +70,23 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="hapus_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Anda yakin mau Menghapus Data ini?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="<?php echo base_url('admin/data_makmin/hapus/').$makmin->id_makmin?>">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 

@@ -124,9 +124,12 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <?php if($this->session->userdata('role_id')==1){ 
-
-              }else{?>
+              <?php if($this->session->userdata('role_id')==1){ ?>
+                <a class="dropdown-item" href="<?php echo base_url('admin/profil') ?>">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+            <?php  }else{?>
               <a class="dropdown-item" href="<?php echo base_url('user/profil') ?>">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 Profile
@@ -138,7 +141,7 @@
                 Dashboard
               </a>
               <?php }else{ ?>
-                <a class="dropdown-item" href="<?php echo base_url('user/dashboard_user') ?>">
+                <a class="dropdown-item" href="<?php echo base_url('user/pesanan') ?>">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                 Dashboard
               </a>
