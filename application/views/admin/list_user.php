@@ -1,10 +1,11 @@
 <div class="container-fluid">
-
+<?php echo $this->session->flashdata('pesan'); ?>
 <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_makmin"><i class="fas fa-plus fa-sm"></i> Tambah Makanan/Minuman</button>
 
 <table class="table table-bordered">
 
     <tr>
+      
         <th>NAMA</th>
         <th>USERNAME</th>
         <th>EMAIL</th>
@@ -15,6 +16,7 @@
     </tr>
     <?php foreach($user as $user) : ?>
     <tr>
+    
     <td><?php echo $user->nama ?></td>
     <td><?php echo $user->username ?></td>
     <td><?php echo $user->email ?></td>

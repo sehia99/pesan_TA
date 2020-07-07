@@ -1,5 +1,6 @@
 <div class="container-fluid">
 <div class="card">
+<?php echo $this->session->flashdata('pesan'); ?>
     <h5 class="card-header">Detail Makanan/Minuman</h5>
     <div class="card-body">
     <?php foreach($detail as $makmin) : ?>

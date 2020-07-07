@@ -1,4 +1,5 @@
 <div class="container-fluid">
+<?php echo $this->session->flashdata('pesan'); ?>
 <h4>Invoice Pemesanan Makanan </h4>
 <table class="table table-bordered table-hover table-striped">
 <tr>

@@ -46,14 +46,14 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('admin/invoice'); ?>">
           <i class="fas fa-fw fa-file-invoice"></i>
-          <span>Invoices</span></a>
+          <span>Pesanan</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/user'); ?>">
+        <a class="nav-link" href="<?php echo base_url('admin/rekening'); ?>">
           <i class="fas fa-fw fa-database"></i>
-          <span>List User</span></a>
-      </li>
+          <span>Rekening</span></a>
+      </li> 
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

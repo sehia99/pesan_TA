@@ -1,4 +1,5 @@
 <div class="container-fluid">
+<?php echo $this->session->flashdata('pesan'); ?>
 <div class="row">
 <div class="col-md-2"></div>
 <div class="col-md-8">

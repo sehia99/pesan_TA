@@ -1,10 +1,19 @@
 <div class="container-fluid">
+<?php echo $this->session->flashdata('pesan'); ?>
 <div class="card">
     <h5 class="card-header">Profil</h5>
     <div class="card-body">
     <?php foreach($user as $user) : ?>
         <div class="row">
-            <div class="col-md-4"><img src="<?php echo base_url().'/uploads/'.$user->gambar ?>" class="card-img-top mb-2"><div class="file btn btn-sm btn-primary">Ganti Photo Profil<input type="file" name="gambar"/></div></div>
+            <div class="col-md-4"><img src="<?php echo base_url().'/uploads/'.$user->gambar ?>" class="card-img-top mb-2">
+            <form action="<?php echo base_url('user/profil/edit_photo') ?>" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+            <label>Ganti Photo Profil</label>
+            <input type="file" name="gambar">
+            <button class="btn btn-sm btn-primary mt-2" type="submit">Simpan</button>
+            </div>
+            </form>
+            </div>
             <div class="col-md-8">
             <table class="table">
             <tr>

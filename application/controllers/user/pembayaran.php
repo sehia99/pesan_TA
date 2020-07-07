@@ -23,6 +23,7 @@ class Pembayaran extends CI_Controller{
     }
     
     public function proses_bayar(){
+        
         $id_invoice     = $this->input->post('id_invoice');
         $nama_peng      = $this->input->post('nama_peng');
         $no_peng        = $this->input->post('no_peng');

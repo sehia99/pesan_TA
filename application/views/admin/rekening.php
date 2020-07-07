@@ -1,24 +1,21 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
-<a href="<?php echo base_url('admin/data_makmin/tambah_makmin'); ?>"><button class="btn btn-sm btn-primary mb-3" ><i class="fas fa-plus fa-sm"></i> Tambah Makanan/Minuman</button></a>
+<a href="<?php echo base_url('admin/rekening/form_rekening'); ?>"><button class="btn btn-sm btn-primary mb-3" ><i class="fas fa-plus fa-sm"></i> Tambah Rekening</button></a>
 
 <table class="table table-bordered">
 
     <tr>
         <th>NAMA</th>
-        <th>KETERANGAN</th>
-        <th>KATEGORI</th>
-        <th>HARGA</th>
-        <th colspan="3">AKSI</th>
+        <th>NAMA BANK</th>
+        <th>NO. REKENING</th>
+        <th colspan="2">AKSI</th>
     </tr>
-    <?php foreach($makmin as $makmin) : ?>
+    <?php foreach($rek as $rek) : ?>
     <tr>
-    <td><?php echo $makmin->nama_makmin ?></td>
-    <td><?php echo $makmin->keterangan ?></td>
-    <td><?php echo $makmin->kategori ?></td>
-    <td><?php echo $makmin->harga ?></td>
-    <td><?php echo anchor('admin/data_makmin/detail_makmin/'.$makmin->id_makmin,'<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?></td>
-    <td><?php echo anchor('admin/data_makmin/edit/'.$makmin->id_makmin,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
+    <td><?php echo $rek->nama ?></td>
+    <td><?php echo $rek->nama_bank ?></td>
+    <td><?php echo $rek->no_rekening ?></td>
+    <td><?php echo anchor('admin/rekening/edit/'.$rek->id,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
     <td><button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_modal"><i class="fa fa-trash"></i></button></td>
     <?php endforeach; ?>
     </tr>
@@ -83,7 +80,7 @@
         <div class="modal-body">Anda yakin mau Menghapus Data ini?</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?php echo base_url('admin/data_makmin/hapus/').$makmin->id_makmin?>">Hapus</a>
+          <a class="btn btn-primary" href="<?php echo base_url('admin/rekening/hapus/').$rek->id?>">Hapus</a>
         </div>
       </div>
     </div>

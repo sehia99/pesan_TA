@@ -33,7 +33,9 @@
                     
                   </form>
                   <hr>
-                  
+                  <div class="text-center">
+                  <a class="small" href="<?php echo base_url('auth/resset_password') ?>">Lupa Password?</a>
+                  </div>
                   <div class="text-center">
                     <a class="small" href="<?php echo base_url('registrasi/index') ?>">Belum punya akun? Daftar!</a>
                   </div>

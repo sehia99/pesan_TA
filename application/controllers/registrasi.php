@@ -6,12 +6,14 @@ class Registrasi extends CI_Controller{
         $this->form_validation->set_rules('nama', 'Nama', 'required',[
             'required' => 'Nama Tidak Boleh Kosong!'
         ]);
-        $this->form_validation->set_rules('username', 'Username', 'required|unique',[
+        $this->form_validation->set_rules('username', 'Username', 'required|unique|alpha_number',[
             'required' => 'Username Tidak Boleh Kosong!',
-            'unique'   => 'Username Sudah Terdaftar!'
+            'unique'   => 'Username Sudah Terdaftar!',
+            'alpha_number' => 'Username Hanya Boleh Menggunakan Huruf dan Angka'
         ]);
-        $this->form_validation->set_rules('email', 'Email', 'required',[
-            'required' => 'Email Tidak Boleh Kosong!'
+        $this->form_validation->set_rules('email', 'Email', 'required|unique',[
+            'required' => 'Email Tidak Boleh Kosong!',
+            'unique'    => 'Email Sudah Terdaftar'
         ]);
         $this->form_validation->set_rules('no_tlp', 'No.Tlp', 'required',[
             'required' => 'No. Telephone Tidak Boleh Kosong!'
@@ -23,7 +25,10 @@ class Registrasi extends CI_Controller{
             'required' => 'Password Tidak Boleh Kosong!',
             'matches'   => 'Password Tidak Cocok!'
         ]);
-        $this->form_validation->set_rules('password_2', 'Password', 'required|matches[password_1]');
+        $this->form_validation->set_rules('password_2', 'Password', 'required|matches[password_1]',[
+            'required' => 'Password Tidak Boleh Kosong!',
+            'matches'   => 'Password Tidak Cocok!'
+        ]);
 
         if($this->form_validation->run() == FALSE){
         $this->load->view('templates/header');

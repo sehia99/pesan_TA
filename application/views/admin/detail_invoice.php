@@ -1,4 +1,5 @@
 <div class="container-fluid mb-3">
+<?php echo $this->session->flashdata('pesan'); ?>
 <h4>Detail Pesanan <div class="btn btn-sm btn-success">No. Invoice: <?php echo $invoice->id; ?></div></h4>
 
 <table class="table table-bordered table-hover table-striped">
