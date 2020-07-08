@@ -26,6 +26,24 @@
     <td>Batas Bayar</td>
     <td><?php echo $invoice->batas_bayar ?></td>
 </tr>
+<tr>
+<td>Estimasi</td>
+<td><?php echo $invoice->estimasi ?></td>
+</tr>
+<tr>
+    <td>Status</td>
+    <?php if($invoice->proses=='dikirim'){ ?>
+    <td>Pesanan Sedang Dikirim</td>
+    <?php }elseif($invoice->confirm == 'confirm'){ ?>
+        <td>Pesanan Sedang Disiapkan</td>
+    <?php }elseif($invoice->confirm == 'dibayar'){ ?>
+    <td>Menunggu Konfirmasi Pembayaran</td>
+    <?php }elseif($invoice->status == 'batal'){?>
+    <td>Pesanan Dibatalkan</td>
+    <?php }else{ ?>
+    <td>Pesanan Belum Dibayar</td>
+    <?php }; ?>
+</tr>
 <?php endforeach; ?>
 <tr>
 <th>NAMA MAKANAN/MINUMAN</th>
@@ -56,8 +74,8 @@ foreach($pesanan as $pesanan) :
 </div>
 <div align="right">
 <a href="<?php echo base_url('user/pesanan') ?>"><div class="btn btn-primary btn-sm">Kembali</div></a>
-<a href="<?php echo base_url('user/pesanan/batal_pesan').'/'.$id_invoice->id ?>"><div class="btn btn-danger btn-sm">Batal Pesan</div></a>
 <?php if($invoice->confirm != 'confirm'){ ?>
+    <a href="<?php echo base_url('user/pesanan/batal_pesan').'/'.$id_invoice->id ?>"><div class="btn btn-danger btn-sm">Batal Pesan</div></a>
     <a href="<?php echo base_url().'user/pembayaran/index/'.$id_invoice->id ?>"><div class="btn btn-success btn-sm">Bayar</div></a>
 <?php }else{ ?>
     <div class="btn btn-success btn-sm">Pembayaran Dikonfirmasi, Pesanan Anda Akan Segera Datang</div>

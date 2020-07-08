@@ -21,9 +21,11 @@
 <td><?php echo anchor('admin/invoice/detail/'.$invoice->id, '<div class="btn btn-sm btn-primary">Detail</div>'); ?></td>
 <?php if($invoice->status == 'batal'){ ?>
 <td><div class="btn btn-sm btn-danger">Pesanan Batal</div></td>
+<?php }elseif($invoice->proses == 'dikirim'){ ?>
+<td><div class="btn btn-sm btn-success">Pesanan Selesai</div></td>
 <?php }elseif($invoice->confirm == 'confirm'){ ?>
     <td><div class="btn btn-sm btn-success">Pesanan Sudah Dibayar</div></td>
-<?php }elseif($invoice->id_invoice){ ?>
+<?php }elseif($invoice->confirm == 'dibayar'){ ?>
     <td><div class="btn btn-sm btn-success">Perlu Konfirmasi</div></td>
 <?php }else{ ?>
     <td><div class="btn btn-sm btn-danger">Pesanan Belum Dibayar</div></td>

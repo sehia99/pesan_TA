@@ -14,11 +14,16 @@
 <td><?php echo $invoice->tgl_pesan; ?></td>
 <td><?php echo $invoice->batas_bayar; ?></td>
 <td><?php echo anchor('user/pesanan/detail/'.$invoice->id, '<div class="btn btn-sm btn-primary">Detail</div>'); ?></td>
-<td><?php if($invoice->confirm != 'confirm'){ ?>
-    <div class="btn btn-danger btn-sm">Belum Dibayar</div>
+<td><?php if($invoice->proses == 'dikirim'){ ?>
+    <div class="btn btn-success btn-sm">Pesanan Sedang Dikirim</div>
+<?php }elseif($invoice->confirm == 'confirm'){ ?>
+    <div class="btn btn-success btn-sm">Pesanan Sedang Di Siapkan!</div>
+<?php }elseif($invoice->confirm == 'dibayar'){ ?>
+    <div class="btn btn-success btn-sm">Menunggu Konfirmasi</div>
 <?php }else{ ?>
-    <div class="btn btn-success btn-sm">Pesanan Sedang Dikirim!</div>
+    <div class="btn btn-danger btn-sm">Belum Dibayar</div>
 <?php }; ?></td>
+
 </tr>
 <?php endforeach; ?>
 </table>

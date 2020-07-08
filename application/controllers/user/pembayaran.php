@@ -46,7 +46,18 @@ class Pembayaran extends CI_Controller{
             'no_peng'   =>$no_peng,
             'gambar'      =>$gambar
         );
+        $where = array('id' => $id_invoice);
+        $data2 = array(
+            'confirm' => 'dibayar'
+        );
         $this->model_pembayaran->tambah_bayar($data, 'tb_pembayaran');
+        $this->model_invoice->confirm_bayar($where, $data2, 'tb_invoice');
+        $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Pembayaran Berhasil Dikirim, Menunggu konfirmasi !</strong>
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>');
         redirect('user/pesanan');
     }
 }

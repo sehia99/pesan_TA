@@ -17,15 +17,23 @@
         }
 
         
-        public function tambah_ke_keranjang($id){
+        public function tambah_ke_keranjang(){
+            $id = $this->input->post('id');
+            $jumlah = $this->input->post('jumlah');
             $makmin = $this->model_makmin->find($id);
             $data = array(
                 'id'    =>$makmin->id_makmin,
-                'qty'   =>1,
+                'qty'   =>$jumlah,
                 'price' =>$makmin->harga,
                 'name'  =>$makmin->nama_makmin
             );
             $this->cart->insert($data);
+            $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Berhasil Ditambah Ke Keranjang</strong>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>');
             redirect('welcome');
         }
 

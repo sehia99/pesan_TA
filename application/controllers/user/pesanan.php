@@ -16,7 +16,13 @@ class Pesanan extends CI_Controller{
             }
     public function index(){
             $username = $this->session->userdata('username');
-            $data['invoice']=$this->model_invoice->invoice_user($username);
+            $date = new DateTime("now");
+             $cur_date = $date->format('Y-m-d h:i:s');
+            $where = array(
+                    'username' => $username,
+                   'DATE(batas_bayar) >' => $cur_date
+            );
+            $data['invoice']=$this->model_invoice->invoice_user($where);
             $this->load->view('templates_user/header');
             $this->load->view('templates_user/sidebar');
             $this->load->view('user/pesanan', $data);
