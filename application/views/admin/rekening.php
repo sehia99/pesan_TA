@@ -10,6 +10,7 @@
         <th>NO. REKENING</th>
         <th colspan="2">AKSI</th>
     </tr>
+    <?php  if($rek!=NULL){ ?>
     <?php foreach($rek as $rek) : ?>
     <tr>
     <td><?php echo $rek->nama ?></td>
@@ -17,9 +18,13 @@
     <td><?php echo $rek->no_rekening ?></td>
     <td><?php echo anchor('admin/rekening/edit/'.$rek->id,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
     <td><button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_modal"><i class="fa fa-trash"></i></button></td>
-    <?php endforeach; ?>
     </tr>
-
+    <?php endforeach; ?>
+    <?php }else{ ?>
+    <tr>
+    <td colspan="5">Tidak Ada Data</td>
+    </tr>
+    <?php }; ?>
 </table>
 </div>
 

@@ -35,6 +35,7 @@ class Model_invoice extends CI_Model{
     public function tampil_data($where){
         //$this->db->where($where);
         $this->db->select('tb_invoice.*, tb_pembayaran.id_invoice')->from('tb_invoice')->join('tb_pembayaran', 'tb_pembayaran.id_invoice=tb_invoice.id', 'left')->where($where);
+        $this->db->order_by('id', 'DESC');
         $result = $this->db->get();
         if($result->num_rows() >0){
             return $result->result();
@@ -52,7 +53,7 @@ class Model_invoice extends CI_Model{
     }
 
     public function invoice_user($where){
-        $result = $this->db->where($where)->get('tb_invoice');
+        $result = $this->db->where($where)->order_by('id', 'DESC')->get('tb_invoice');
         if($result->num_rows() > 0){
             return $result->result();
         }else{

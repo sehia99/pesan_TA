@@ -10,6 +10,7 @@
 <th>Batas Pembayaran</th>
 <th colspan="2">Aksi</th>
 </tr>
+<?php if($invoice!=NULL){ ?>
 <?php foreach($invoice as $invoice) : 
     ?>
 <tr>
@@ -32,5 +33,10 @@
 <?php };?>
 </tr>
 <?php endforeach; ?>
+<?php }else{ ?>
+<tr>
+<td colspan="7">Tidak Ada Pesanan</td>
+</tr>
+<?php };?>
 </table>
 </div>

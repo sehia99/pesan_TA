@@ -75,7 +75,7 @@ foreach($pesanan as $pesanan) :
 <div align="right">
 <a href="<?php echo base_url('user/pesanan') ?>"><div class="btn btn-primary btn-sm">Kembali</div></a>
 <?php if($invoice->confirm != 'confirm'){ ?>
-    <a href="<?php echo base_url('user/pesanan/batal_pesan').'/'.$id_invoice->id ?>"><div class="btn btn-danger btn-sm">Batal Pesan</div></a>
+    <div class="btn btn-danger btn-sm" data-toggle="modal" data-target="#batalModal">Batal Pesan</div>
     <a href="<?php echo base_url().'user/pembayaran/index/'.$id_invoice->id ?>"><div class="btn btn-success btn-sm">Bayar</div></a>
 <?php }else{ ?>
     <div class="btn btn-success btn-sm">Pembayaran Dikonfirmasi, Pesanan Anda Akan Segera Datang</div>
@@ -85,3 +85,21 @@ foreach($pesanan as $pesanan) :
 </div>
 </div>
 </div>
+
+<div class="modal fade" id="batalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Batal</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Anda yakin mau Membatalkan Pesanan?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="<?php echo base_url('user/pesanan/batal_pesan/').$id_invoice->id; ?>">Yakin</a>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -15,12 +15,17 @@ class Pesanan extends CI_Controller{
                 }
             }
     public function index(){
+            date_default_timezone_set('Asia/Jakarta');
             $username = $this->session->userdata('username');
-            $date = new DateTime("now");
-             $cur_date = $date->format('Y-m-d h:i:s');
+            //$date = new DateTime("now");
+            // $cur_date = $date->format('Y-m-d h:i:s');
+            $date_now = date('Y-m-d H:i:s');
             $where = array(
                     'username' => $username,
-                   'DATE(batas_bayar) >' => $cur_date
+                   'TIMESTAMP(batas_bayar) >' => $date_now,
+                   'status !=' => 'batal'
+                   
+                   
             );
             $data['invoice']=$this->model_invoice->invoice_user($where);
             $this->load->view('templates_user/header');
@@ -47,6 +52,12 @@ class Pesanan extends CI_Controller{
                   'status' => 'batal'
           );
           $this->model_invoice->batal_pesan($where,$data, 'tb_invoice');
+          $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Pesanan Dibatalkan</strong>
+                    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
           redirect('user/pesanan/index');
     }
 }

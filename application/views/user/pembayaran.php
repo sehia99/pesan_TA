@@ -27,7 +27,25 @@
         <input type="file" name="gambar" class="form-control">
     </div>    
     <?php echo anchor('user/pesanan/detail_pesanan', '<div class="btn btn-danger btn-sm">Kembali </div>') ?>
-    <button class="btn btn-success btn-sm" type="submit">Confirm</button>
+    <div class="btn btn-success btn-sm" data-toggle="modal" data-target="#confirmModal">Confirm</div>
+   
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Bayar</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Anda yakin Data Pembayaran Sudah Benar?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-sm btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 </div>
 <div class="col-md-2"></div>

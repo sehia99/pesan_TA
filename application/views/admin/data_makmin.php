@@ -11,6 +11,7 @@
         <th>HARGA</th>
         <th colspan="3">AKSI</th>
     </tr>
+    <?php if($makmin!=NULL){ ?>
     <?php foreach($makmin as $makmin) : ?>
     <tr>
     <td><?php echo $makmin->nama_makmin ?></td>
@@ -21,6 +22,9 @@
     <td><?php echo anchor('admin/data_makmin/edit/'.$makmin->id_makmin,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
     <td><button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_modal"><i class="fa fa-trash"></i></button></td>
     <?php endforeach; ?>
+    <?php }else{ ?>
+    <td colspan="7">Tidak Ada Data</td>
+    <?php }; ?>
     </tr>
 
 </table>

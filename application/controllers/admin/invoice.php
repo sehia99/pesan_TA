@@ -15,10 +15,13 @@ class Invoice extends CI_Controller{
     }
 
     public function index(){
+        date_default_timezone_set('Asia/Jakarta');
         $date = new DateTime("now");
         $cur_date = $date->format('Y-m-d');
+        $cur_time = date('Y-m-d H:i:s');
         $where = array('DATE(tgl_pesan)' => $cur_date);
-        $data['invoice'] = $this->model_invoice->tampil_data($where);
+        $order = array('id' => 'DESC');
+        $data['invoice'] = $this->model_invoice->tampil_data($where, $order);
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/invoice', $data);
@@ -40,7 +43,8 @@ class Invoice extends CI_Controller{
         $estimasi = $this->input->post('estimasi');
        $where = array('id' =>$id_invoice);
         $data= array('confirm' => 'confirm',
-                    'estimasi' => $estimasi
+                    'estimasi' => $estimasi,
+                    'batas_bayar' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d')+1, date('Y')))
     );
         $this->model_invoice->confirm_bayar($where, $data, 'tb_invoice');
         $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
