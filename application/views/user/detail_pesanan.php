@@ -74,12 +74,20 @@ foreach($pesanan as $pesanan) :
 </div>
 <div align="right">
 <a href="<?php echo base_url('user/pesanan') ?>"><div class="btn btn-primary btn-sm">Kembali</div></a>
-<?php if($invoice->confirm != 'confirm'){ ?>
-    <div class="btn btn-danger btn-sm" data-toggle="modal" data-target="#batalModal">Batal Pesan</div>
-    <a href="<?php echo base_url().'user/pembayaran/index/'.$id_invoice->id ?>"><div class="btn btn-success btn-sm">Bayar</div></a>
-<?php }else{ ?>
+<?php if($id_komplain!=NULL){ ?>
+    <div class="btn btn-sm btn-success">Komplain Sedang Diproses, Silahkan Tunggu Pesanan Datang</div>
+    <a href="<?php echo base_url('user/pesanan/diterima/').$id_invoice->id ?>"><div class="btn btn-sm btn-primary">Pesanan Diterima</div></a>
+<?php }else{if($invoice->confirm == 'dibayar'){ ?>
+    <div class="btn btn-success btn-sm" >Menunggu Konfirmasi</div>
+<?php }elseif($invoice->confirm == 'confirm'){ ?>
     <div class="btn btn-success btn-sm">Pembayaran Dikonfirmasi, Pesanan Anda Akan Segera Datang</div>
-<?php }; ?>
+    <a href="<?php echo base_url('user/pesanan/diterima/').$id_invoice->id ?>"><div class="btn btn-sm btn-primary">Pesanan Diterima</div></a>
+    <a href="<?php echo base_url('user/pesanan/komplain/').$id_invoice->id ?>"><div class="btn btn-sm btn-danger">Komplain</div></a>
+<?php }else{ ?>
+    <div class="btn btn-danger btn-sm" data-toggle="modal" data-target="#batalModal">Batal Pesan </div>
+    <a href="<?php echo base_url('user/pembayaran/index/').$id_invoice->id ?>"><div class="btn btn-sm btn-success">Bayar</div></a>
+
+<?php }}; ?>
 
 </div>
 </div>

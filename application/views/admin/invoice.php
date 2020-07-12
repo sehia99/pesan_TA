@@ -20,17 +20,21 @@
 <td><?php echo $invoice->tgl_pesan; ?></td>
 <td><?php echo $invoice->batas_bayar; ?></td>
 <td><?php echo anchor('admin/invoice/detail/'.$invoice->id, '<div class="btn btn-sm btn-primary">Detail</div>'); ?></td>
-<?php if($invoice->status == 'batal'){ ?>
+<?php if($invoice->komplain != NULL){ ?>
+<td><div class="btn btn-sm btn-danger">User Komplain</div></td>
+<?php }else{if($invoice->status == 'batal'){ ?>
 <td><div class="btn btn-sm btn-danger">Pesanan Batal</div></td>
-<?php }elseif($invoice->proses == 'dikirim'){ ?>
+<?php }elseif($invoice->status == 'diterima'){ ?>
 <td><div class="btn btn-sm btn-success">Pesanan Selesai</div></td>
+<?php }elseif($invoice->proses == 'dikirim'){ ?>
+<td><div class="btn btn-sm btn-success">Menunggu Konfirmasi User</div></td>
 <?php }elseif($invoice->confirm == 'confirm'){ ?>
     <td><div class="btn btn-sm btn-success">Pesanan Sudah Dibayar</div></td>
 <?php }elseif($invoice->confirm == 'dibayar'){ ?>
     <td><div class="btn btn-sm btn-success">Perlu Konfirmasi</div></td>
 <?php }else{ ?>
     <td><div class="btn btn-sm btn-danger">Pesanan Belum Dibayar</div></td>
-<?php };?>
+<?php }};?>
 </tr>
 <?php endforeach; ?>
 <?php }else{ ?>

@@ -105,4 +105,26 @@ class Model_invoice extends CI_Model{
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    public function komplain($data){
+        $this->db->insert('tb_komplain', $data);
+    }
+
+    public function ambil_id_komplain($id_invoice){
+        $result = $this->db->where('id_invoice', $id_invoice)->limit(1)->get('tb_komplain');
+        if($result->num_rows() > 0){
+            return $result->row();
+        }else{
+            return false;
+        }
+    }
+
+    public function ambil_komplain($id_invoice){
+        $result = $this->db->where('id_invoice', $id_invoice)->get('tb_komplain');
+        if($result->num_rows() > 0){
+            return $result->result();
+        }else{
+            return false;
+        }
+    }
 }

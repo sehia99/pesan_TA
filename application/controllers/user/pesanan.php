@@ -38,6 +38,7 @@ class Pesanan extends CI_Controller{
             $data['invoice']=$this->model_invoice->detail_invoice_user($id_invoice);
             $data['pesanan']=$this->model_invoice->ambil_id_pesanan($id_invoice);
             $data['id_invoice']=$this->model_invoice->ambil_id_invoice($id_invoice);
+            $data['id_komplain']=$this->model_invoice->ambil_id_komplain($id_invoice);
             $this->load->view('templates_user/header');
             $this->load->view('templates_user/sidebar');
             $this->load->view('user/detail_pesanan', $data);
@@ -59,5 +60,53 @@ class Pesanan extends CI_Controller{
                     </button>
                 </div>');
           redirect('user/pesanan/index');
+    }
+
+    public function komplain($id){
+        $data['id_invoice']=$this->model_invoice->ambil_id_invoice($id);
+        $this->load->view('templates_user/header');
+        $this->load->view('templates_user/sidebar');
+        $this->load->view('user/komplain', $data);
+        $this->load->view('templates_user/footer');
+    }
+
+    public function kirim_komplain(){
+            $id = $this->input->post('id');
+            $komplain = $this->input->post('komplain');
+            $where = array('id' => $id);
+            $data_i = array(
+                    'komplain' => 'Ya',
+                    'proses' => 'komplain'
+            );
+            $data = array(
+                    'id_invoice' => $id,
+                    'komplain' => $komplain
+            );
+            $this->model_invoice->batal_pesan($where,$data_i, 'tb_invoice');
+            $this->model_invoice->komplain($data);
+            $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Komplain Telah Dikirim</strong>
+                    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+                redirect('user/pesanan/index');     
+    }
+
+    public function diterima($id){
+        $where = array(
+                'id' => $id
+        );
+        $data = array(
+                'status' => 'diterima'
+        );
+        $this->model_invoice->batal_pesan($where,$data, 'tb_invoice');
+        $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>PesananDiterima, Pesanan Selesai</strong>
+                  <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>');
+        redirect('user/pesanan/index');
     }
 }

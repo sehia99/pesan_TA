@@ -22,6 +22,7 @@ class Invoice extends CI_Controller{
         $where = array('DATE(tgl_pesan)' => $cur_date);
         $order = array('id' => 'DESC');
         $data['invoice'] = $this->model_invoice->tampil_data($where, $order);
+        //$data['id_komplain']=$this->model_invoice->ambil_id_komplain($id_invoice);
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/invoice', $data);
@@ -32,6 +33,7 @@ class Invoice extends CI_Controller{
         $data['pesanan']=$this->model_invoice->ambil_id_pesanan($id_invoice);
         $data['pembayaran']=$this->model_invoice->data_pembayaran($id_invoice);
         $data['cek']= $this->model_invoice->ambil_id_bayar($id_invoice);
+        $data['komplain'] =$this->model_invoice->ambil_komplain($id_invoice);
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin/detail_invoice', $data);

@@ -30,6 +30,18 @@ foreach($pesanan as $pesanan) :
 <td align="right">Rp. <?php echo number_format($total, 0,',','.') ?></td>
 
 </tr>
+<?php if($komplain != NULL){ foreach($komplain as $komplain): ?>
+<tr>
+<td>Komplain</td>
+</tr>
+<tr>
+<td>Komplain</td>
+<td><?php echo $komplain->komplain ?></td>
+</tr>
+<?php endforeach; }else{ ?>
+<tr>
+<td>Tidak Ada Komplain</td></tr>
+<?php }; ?>
 <?php if($cek == FALSE){ ?>
     <div class="btn btn-sm btn-danger mb-3">Pesanan Belum Dibayar</div>
 <?php }else{foreach($pembayaran as $byr) : ?>
@@ -59,6 +71,7 @@ foreach($pesanan as $pesanan) :
 </table>
 <div class="row">
 <a href="<?php echo base_url('admin/invoice/index') ?>"><div class="btn btn-sm btn-secondary">Kembali</div></a>
+
 <?php if($cek == FALSE){ ?>
 <?php }elseif($invoice->proses == 'dikirim'){?>
 <div class="btn btn-sm btn-success ml-3">Pesanan Selesai</div>    
