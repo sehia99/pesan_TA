@@ -58,7 +58,7 @@ foreach($pesanan as $pesanan) :
 </tr>
 <tr>
 <td>Bukti Pembayaran</td>
-<td><img src="<?php echo base_url().'uploads/pembayaran/'.$byr->gambar ?>"></td>
+<td><a href="<?php echo base_url().'uploads/pembayaran/'.$byr->gambar ?>"><img src="<?php echo base_url().'uploads/pembayaran/'.$byr->gambar ?>" class="img-thumbnail" style="height: 100px; height:200px"></a></td>
 </tr>
 <tr>
 <td>Tanggal Pembayaran</td>

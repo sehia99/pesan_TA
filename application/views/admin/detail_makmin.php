@@ -5,10 +5,21 @@
     <div class="card-body">
     <?php foreach($detail as $makmin) : ?>
         <div class="row">
-            <div class="col-md-4"><img src="<?php echo base_url().'/uploads/'.$makmin->gambar ?>" class="card-img-top"></div>
+            <div class="col-md-4"><a href="<?php echo base_url().'/uploads/'.$makmin->gambar ?>"><img src="<?php echo base_url().'/uploads/'.$makmin->gambar ?>" class="card-img-top img-fluid"></a>
+            <form action="<?php echo base_url('admin/data_makmin/edit_photo') ?>" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="hidden" name="id" value="<?php echo $makmin->id_makmin ?>">
+            <label>Ganti Photo Makmin</label>
+            <input type="file" name="gambar">
+            <?php echo form_error('gambar', '<div class="text-danger small ml-2">*','</div>') ?>
+            <button class="btn btn-sm btn-primary mt-2" type="submit">Simpan</button>
+            </div>
+            </form>
+            </div>
             <div class="col-md-8">
             <table class="table">
             <tr>
+                
                 <td>Nama Makanan/Minuman</td>
                 <td><strong ><?php echo $makmin->nama_makmin ?></strong></td>
             </tr>

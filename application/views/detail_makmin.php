@@ -4,7 +4,7 @@
     <div class="card-body">
     <?php foreach($makmin as $makmin) : ?>
         <div class="row">
-            <div class="col-md-4"><img src="<?php echo base_url().'/uploads/'.$makmin->gambar ?>" class="card-img-top"></div>
+            <div class="col-md-4"><img src="<?php echo base_url().'/uploads/'.$makmin->gambar ?>" class="card-img-top img-fluid"></div>
             <div class="col-md-8">
             <table class="table">
             <tr>

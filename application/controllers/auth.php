@@ -133,7 +133,7 @@ class Auth extends CI_Controller{
                 $this->load->view('templates/header');
                 $this->load->view('templates/topbar');
                $this->load->view('form_resset_password');
-               $this->load->view('templates/footer');
+               $this->load->view('templates/footer');include_once 'file';
             }else{
                 $where = array('resset_password' => $resset_key);
                 $data  = array('password' => MD5($password));
@@ -148,5 +148,7 @@ class Auth extends CI_Controller{
                 redirect('auth/login');
             }
         }
+
+
 }
 

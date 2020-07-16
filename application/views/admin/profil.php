@@ -6,7 +6,7 @@
     <div class="card-body">
     <?php foreach($user as $user) : ?>
         <div class="row">
-            <div class="col-md-4"><img src="<?php echo base_url().'/uploads/'.$user->gambar ?>" class="card-img-top mb-2">
+            <div class="col-md-4"><a href="<?php echo base_url().'/uploads/'.$user->gambar ?>"><img src="<?php echo base_url().'/uploads/'.$user->gambar ?>" class="card-img-top mb-2 img-fluid"></a>
             <form action="<?php echo base_url('admin/profil/edit_photo') ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
             <label>Ganti Photo Profil</label>

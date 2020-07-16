@@ -126,11 +126,13 @@ class Data_makmin extends CI_Controller{
             'required' => 'Harga Tidak Boleh Kosong !',
             'min_length' => 'Harga Terlalu Kecil !'
         ]);
-        
+        $id = $this->input->post('id_makmin');
         if($this->form_validation->run()==FALSE){
+            $where = array('id_makmin'=> $id);
+            $data['makmin']= $this->model_makmin->edit($where, 'tb_makmin')->result();
             $this->load->view('templates_admin/header');
             $this->load->view('templates_admin/sidebar');
-            $this->load->view('admin/edit_makmin');
+            $this->load->view('admin/edit_makmin', $data);
             $this->load->view('templates_admin/footer');
         }else{
         $id             =$this->input->post('id_makmin');
@@ -152,7 +154,7 @@ class Data_makmin extends CI_Controller{
 
         $this->model_makmin->update_data($where, $data, 'tb_makmin');
         $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Data Telah Ditambah !</strong>
+            <strong>Data Telah Dirubah !</strong>
             <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -179,4 +181,43 @@ class Data_makmin extends CI_Controller{
        $this->load->view('admin/detail_makmin', $data);
        $this->load->view('templates_admin/footer');
     }
+
+     public function edit_photo(){
+        $this->form_validation->set_rules('gambar', 'Gambar', 'callback_gambar_check');
+        if($this->form_validation->run()==FALSE){
+        $id = $this->input->post('id');
+        $data['detail'] = $this->model_makmin->detail_makmin($id);
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('admin/detail_makmin', $data);
+        $this->load->view('templates_admin/footer');
+        }else{
+
+        $id   = $this->input->post('id');
+        $gambar         =$_FILES['gambar']['name'];
+        if($gambar=''){}else{
+            $config['upload_path']='./uploads';
+            $config['allowed_types']='jpg|jpeg|png|gif';
+
+        
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('gambar')){
+                echo "Gambar Gagal Diupload";
+            }else{
+                $gambar=$this->upload->data('file_name');
+            }
+        }
+        $data = array('gambar' => $gambar);
+        $where= array ('id_makmin' =>$id);
+
+        $this->model_user->update_data($where, $data, 'tb_makmin');
+        $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Gambar Berhasil Dirubah ! !</strong>
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>');
+        redirect('admin/data_makmin/index');
+    }
+}
 }

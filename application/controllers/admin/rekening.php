@@ -98,11 +98,13 @@ class Rekening extends CI_Controller{
             'required'  => 'Form Tidak Boleh Kosong',
             'is_natural'=> 'Hanya Boleh Angka!'
         ]);
-        
+        $id             =$this->input->post('id');
         if($this->form_validation->run()==FALSE){
+             $where = array('id'=> $id);
+         $data['rek']= $this->model_rekening->edit($where, 'tb_rekening')->result();
             $this->load->view('templates_admin/header');
             $this->load->view('templates_admin/sidebar');
-            $this->load->view('admin/edit_rekening');
+            $this->load->view('admin/edit_rekening',$data);
             $this->load->view('templates_admin/footer');
         }else{
         $id             =$this->input->post('id');

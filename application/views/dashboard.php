@@ -28,7 +28,7 @@
     <?php  foreach ($makmin as $makmin) : ?>
     <form action="<?php echo base_url('dashboard/tambah_ke_keranjang') ?>" method="post">
         <div class="card ml-3 mb-3" style="width: 18rem;">
-            <img src="<?php echo base_url().'/uploads/'.$makmin->gambar ?>" class="card-img-top" alt="...">
+            <a href="<?php echo base_url().'/uploads/'.$makmin->gambar ?>"><img src="<?php echo base_url().'/uploads/'.$makmin->gambar ?>" class="card-img-top img-fluid img-thumbnail" style="height: 200px" alt="..."></a>
             <div class="card-body">
                 <h5 class="card-title"><?php echo $makmin->nama_makmin ?></h5>
                 <p class="card-text mb-2"><?php echo $makmin->keterangan ?></p>
