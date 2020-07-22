@@ -3,16 +3,29 @@
 <div class="card">
 <h5 class="card-header">Detail Pesanan Anda</h5>
 <div class="card-body">
+ 
 <div class="row">
 <table class="table">
 <?php foreach($invoice as $invoice) : ?>
+   <?php if($invoice->status == 'pesanan_confirm'){ ?>
+    <div class="alert alert-success">
+        Pesanan Telah Diterima, Silahkan Transfer Diantara No. Berikut : 
+            <select class="form-control">
+                <?php foreach($metode as $metode){ ?>
+                <option><?php echo $metode->nama_bank,'-',$metode->nama,'-',$metode->no_rekening ?></option>
+            <?php } ?>
+            </select>
+        
+        
+    </div>
+<?php }else{}?>
 <tr>
     <td>Nama Pemesan</td>
     <td><?php echo $invoice->nama; ?></td>
 </tr>
 <tr>
     <td>Alamat</td>
-    <td><?php echo $invoice->alamat; ?></td>
+    <td><?php echo $invoice->alamat,', ', $invoice->nama_prov,', ', $invoice->nama_kab,', ', $invoice->nama_kec,', ', $invoice->nama_des; ?><!-- <a href="<?php echo base_url('user/pesanan/ganti_alamat/').$invoice->id ?>"><button class="btn btn-sm btn-primary ml-3">Ganti Alamat</button></a>--></td>
 </tr>
 <tr>
     <td>No. Telephone</td>
@@ -32,11 +45,11 @@
 </tr>
 <tr>
     <td>Status</td>
-    <?php if($invoice->proses=='dikirim'){ ?>
+    <?php if($invoice->status=='dikirim'){ ?>
     <td>Pesanan Sedang Dikirim</td>
-    <?php }elseif($invoice->confirm == 'confirm'){ ?>
+    <?php }elseif($invoice->status == 'bayar_confirm'){ ?>
         <td>Pesanan Sedang Disiapkan</td>
-    <?php }elseif($invoice->confirm == 'dibayar'){ ?>
+    <?php }elseif($invoice->status == 'dibayar'){ ?>
     <td>Menunggu Konfirmasi Pembayaran</td>
     <?php }elseif($invoice->status == 'batal'){?>
     <td>Pesanan Dibatalkan</td>
@@ -73,19 +86,25 @@ foreach($pesanan as $pesanan) :
 
 </div>
 <div align="right">
-<a href="<?php echo base_url('user/pesanan') ?>"><div class="btn btn-primary btn-sm">Kembali</div></a>
+<a href="<?php echo base_url('user/pesanan') ?>"><div class="btn btn-secondary btn-sm">Kembali</div></a>
 <?php if($id_komplain!=NULL){ ?>
     <div class="btn btn-sm btn-success">Komplain Sedang Diproses, Silahkan Tunggu Pesanan Datang</div>
     <a href="<?php echo base_url('user/pesanan/diterima/').$id_invoice->id ?>"><div class="btn btn-sm btn-primary">Pesanan Diterima</div></a>
-<?php }else{if($invoice->confirm == 'dibayar'){ ?>
-    <div class="btn btn-success btn-sm" >Menunggu Konfirmasi</div>
-<?php }elseif($invoice->confirm == 'confirm'){ ?>
-    <div class="btn btn-success btn-sm">Pembayaran Dikonfirmasi, Pesanan Anda Akan Segera Datang</div>
-    <a href="<?php echo base_url('user/pesanan/diterima/').$id_invoice->id ?>"><div class="btn btn-sm btn-primary">Pesanan Diterima</div></a>
+<?php }elseif($invoice->status == 'diterima'){ ?>
+    <div class="btn btn-sm btn-success">Pesanan Selesai</div>
+<?php }elseif($invoice->status == 'dikirim'){ ?>
+<a href="<?php echo base_url('user/pesanan/diterima/').$id_invoice->id ?>"><div class="btn btn-sm btn-primary">Pesanan Diterima</div></a>
     <a href="<?php echo base_url('user/pesanan/komplain/').$id_invoice->id ?>"><div class="btn btn-sm btn-danger">Komplain</div></a>
-<?php }else{ ?>
+<?php }elseif($invoice->status == 'bayar_confirm'){ ?>
+    <div class="btn btn-success btn-sm">Pembayaran Dikonfirmasi, Pesanan Anda Akan Segera Datang</div>
+    <?php }else{if($invoice->status == 'dibayar'){ ?>
+    <div class="btn btn-success btn-sm" >Menunggu Konfirmasi</div>
+<?php }elseif($invoice->status == 'pesanan_confirm'){ ?>
     <div class="btn btn-danger btn-sm" data-toggle="modal" data-target="#batalModal">Batal Pesan </div>
     <a href="<?php echo base_url('user/pembayaran/index/').$id_invoice->id ?>"><div class="btn btn-sm btn-success">Bayar</div></a>
+
+<?php }else{ ?>
+<div class="btn btn-danger btn-sm" data-toggle="modal" data-target="#batalModal">Batal Pesan </div>
 
 <?php }}; ?>
 

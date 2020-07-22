@@ -2,13 +2,14 @@
 <?php echo $this->session->flashdata('pesan'); ?>
 <a href="<?php echo base_url('admin/data_makmin/tambah_makmin'); ?>"><button class="btn btn-sm btn-primary mb-3" ><i class="fas fa-plus fa-sm"></i> Tambah Makanan/Minuman</button></a>
 
-<table class="table table-bordered">
+<table class="table table-bordered" id="table">
 
     <tr>
         <th>NAMA</th>
         <th>KETERANGAN</th>
         <th>KATEGORI</th>
         <th>HARGA</th>
+        <th>STOK</th>
         <th colspan="3">AKSI</th>
     </tr>
     <?php if($makmin!=NULL){ ?>
@@ -18,6 +19,7 @@
     <td><?php echo $makmin->keterangan ?></td>
     <td><?php echo $makmin->kategori ?></td>
     <td><?php echo $makmin->harga ?></td>
+    <td><?php echo $makmin->stok ?></td>
     <td><?php echo anchor('admin/data_makmin/detail_makmin/'.$makmin->id_makmin,'<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?></td>
     <td><?php echo anchor('admin/data_makmin/edit/'.$makmin->id_makmin,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
     <td><button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_modal"><i class="fa fa-trash"></i></button></td>
@@ -92,6 +94,8 @@
       </div>
     </div>
   </div>
+
+  
 
 
 

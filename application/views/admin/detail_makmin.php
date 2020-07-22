@@ -36,7 +36,7 @@
                 <td><strong><div class="btn btn-sm btn-success">Rp. <?php echo number_format($makmin->harga, 0, ',','.') ?></div></strong></td>
             </tr>
             </table>
-            <?php echo anchor('admin/data_makmin/index', '<div class="btn btn-sm btn-warning">Kembali</div>') ?>
+            <?php echo anchor('admin/data_makmin/index', '<div class="btn btn-sm btn-secondary">Kembali</div>') ?>
             <?php echo anchor('admin/data_makmin/hapus/'.$makmin->id_makmin,'<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</div>')?>
             <?php echo anchor('admin/data_makmin/edit/'.$makmin->id_makmin,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</div>') ?>
             

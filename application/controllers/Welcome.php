@@ -19,7 +19,8 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index(){
-		$data['makmin']=$this->model_makmin->tampil_data()->result();
+		$where = array('stok !=' => 0);
+		$data['makmin']=$this->model_makmin->tampil_data_home($where)->result();
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
 		$this->load->view('dashboard', $data);

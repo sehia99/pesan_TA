@@ -49,6 +49,7 @@ class Data_makmin extends CI_Controller{
         $keterangan     =$this->input->post('keterangan');
         $kategori       =$this->input->post('kategori');
         $harga          =$this->input->post('harga');
+        $stok           =$this->input->post('stok');
         $gambar         =$_FILES['gambar']['name'];
         if($gambar=''){}else{
             $config['upload_path']='./uploads';
@@ -67,6 +68,7 @@ class Data_makmin extends CI_Controller{
             'keterangan'  =>$keterangan,
             'kategori'    =>$kategori,
             'harga'       =>$harga,
+            'stok'        =>$stok,
             'gambar'      =>$gambar
         );
         $this->model_makmin->tambah_makmin($data, 'tb_makmin');
@@ -140,12 +142,14 @@ class Data_makmin extends CI_Controller{
         $keterangan     =$this->input->post('keterangan');
         $kategori       =$this->input->post('kategori');
         $harga          =$this->input->post('harga');
+        $stok           =$this->input->post('stok');
        
         $data = array(
             'nama_makmin' =>$nama_makmin,
             'keterangan'  =>$keterangan,
             'kategori'    =>$kategori,
             'harga'       =>$harga,
+            'stok'        =>$stok
             
             
         );

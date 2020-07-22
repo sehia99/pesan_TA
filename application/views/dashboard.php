@@ -33,6 +33,7 @@
                 <h5 class="card-title"><?php echo $makmin->nama_makmin ?></h5>
                 <p class="card-text mb-2"><?php echo $makmin->keterangan ?></p>
                 <span class="badge badge-pill badge-success mb-3">Rp. <?php echo number_format($makmin->harga, 0,',','.') ?></span><br>
+                <span>Stok : <?php echo $makmin->stok ?></span><br>
                 <label>Jumlah</label>
                 <input type="hidden" name="id" value="<?php echo $makmin->id_makmin ?>">
                 <div class="row">

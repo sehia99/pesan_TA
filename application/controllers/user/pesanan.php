@@ -35,6 +35,7 @@ class Pesanan extends CI_Controller{
     }
 
     public function detail($id_invoice){
+            $data['metode'] = $this->db->get('tb_rekening')->result();
             $data['invoice']=$this->model_invoice->detail_invoice_user($id_invoice);
             $data['pesanan']=$this->model_invoice->ambil_id_pesanan($id_invoice);
             $data['id_invoice']=$this->model_invoice->ambil_id_invoice($id_invoice);
@@ -76,7 +77,7 @@ class Pesanan extends CI_Controller{
             $where = array('id' => $id);
             $data_i = array(
                     'komplain' => 'Ya',
-                    'proses' => 'komplain'
+                    'status' => 'komplain'
             );
             $data = array(
                     'id_invoice' => $id,
@@ -108,5 +109,30 @@ class Pesanan extends CI_Controller{
                   </button>
               </div>');
         redirect('user/pesanan/index');
+    }
+
+    public function ganti_alamat($id_invoice)
+    {
+        $data['id_invoice']=$this->model_invoice->ambil_id_invoice($id_invoice);
+         $this->load->view('templates_user/header');
+        $this->load->view('templates_user/sidebar');
+        $this->load->view('user/ganti_alamat', $data);
+        $this->load->view('templates_user/footer');
+    }
+
+    public function update_alamat()
+    {
+        $id = $this->input->post('id');
+        $alamat = $this->input->post('alamat');
+        $where= array('id' => $id);
+        $data = array('alamat' => $alamat);
+        $this->model_invoice->batal_pesan($where,$data, 'tb_invoice');
+        $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Alamat Berhasil Dirubah</strong>
+                  <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>');
+        redirect('user/pesanan/detail/'.$id);
     }
 }

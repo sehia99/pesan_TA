@@ -50,6 +50,12 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/laporan'); ?>">
+          <i class="fas fa-fw fa-file-invoice"></i>
+          <span>Laporan</span></a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('admin/rekening'); ?>">
           <i class="fas fa-fw fa-database"></i>
           <span>Rekening</span></a>

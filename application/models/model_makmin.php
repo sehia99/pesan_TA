@@ -5,6 +5,12 @@ class Model_makmin extends CI_Model{
         return $this->db->get('tb_makmin');
     }
 
+    public function tampil_data_home($where)
+    {
+        $this->db->where($where);
+        return $this->db->get('tb_makmin');
+    }
+
     public function tambah_makmin($data, $table){
         $this->db->insert($table, $data);
     }

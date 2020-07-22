@@ -29,8 +29,27 @@
     <label>Alamat</label>
     <input type="text" name="alamat" class="form-control" value="<?php echo $user->alamat; ?>">
     <?php echo form_error('alamat', '<div class="text-danger small ml-2">*','</div>') ?>
+    <select name="prov" class="form-control" id="provinsi" >
+                  <option value="<?php echo $user->prov ?>"><?php echo $user->nama_prov ?></option>
+                  <?php 
+                    foreach($provinsi as $prov)
+                    {
+                      echo '<option value="'.$prov->id.'">'.$prov->nama.'</option>';
+                    }
+                  ?>
+                </select>
+                 <select name="kab" class="form-control" id="kabupaten">
+                  <option value="<?php echo $user->kab ?>"><?php echo $user->nama_kab ?></option>
+                </select>
+                <select name="kec" class="form-control" id="kecamatan">
+                <option value="<?php echo $user->kec ?>"><?php echo $user->nama_kec ?></option>
+              </select>
+              <select name="des" class="form-control" id="desa">
+                <option value="<?php echo $user->des ?>"><?php echo $user->nama_des ?></option>
+              </select> 
     <input type="hidden" name="role_id" class="form-control" value="<?php echo $user->role_id; ?>">
     </div>
+    <a href="<?php echo base_url('user/profil') ?>"><button class="btn btn-sm btn-secondary mt-3">Kembali</button></a>
     <button type="submit" class="btn btn-primary btn-sm mt-3">Simpan</button>
 </form>
 <?php endforeach; ?>

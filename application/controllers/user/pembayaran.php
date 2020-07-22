@@ -48,7 +48,7 @@ class Pembayaran extends CI_Controller{
         );
         $where = array('id' => $id_invoice);
         $data2 = array(
-            'confirm' => 'dibayar'
+            'status' => 'dibayar'
         );
         $this->model_pembayaran->tambah_bayar($data, 'tb_pembayaran');
         $this->model_invoice->confirm_bayar($where, $data2, 'tb_invoice');

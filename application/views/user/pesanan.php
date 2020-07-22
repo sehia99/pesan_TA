@@ -18,17 +18,22 @@
 <td>
 <?php if($invoice->status == 'diterima'){ ?>
     <div class="btn btn-success btn-sm">Pesanan Selesai</div>
-    <?php }elseif($invoice->proses == 'komplain'){ ?>
+    <?php }elseif($invoice->komplain == 'Ya'){ ?>
     <div class="btn btn-danger btn-sm">Komplain</div>
-<?php }elseif($invoice->proses == 'dikirim'){ ?>
+<?php }elseif($invoice->status == 'dikirim'){ ?>
     <div class="btn btn-success btn-sm">Pesanan Sedang Dikirim</div>
-<?php }elseif($invoice->confirm == 'confirm'){ ?>
+<?php }elseif($invoice->status == 'bayar_confirm'){ ?>
     <div class="btn btn-success btn-sm">Pesanan Sedang Di Siapkan!</div>
-<?php }elseif($invoice->confirm == 'dibayar'){ ?>
+<?php }elseif($invoice->status == 'ditolak'){ ?>
+	<div class="btn btn-danger btn-sm">Pembayaran Ditolak</div>
+<?php }elseif($invoice->status == 'dibayar'){ ?>
     <div class="btn btn-success btn-sm">Menunggu Konfirmasi</div>
-<?php }else{ ?>
+<?php }elseif($invoice->status == 'pesanan_confirm' || $invoice->status== 'bayar_ditolak'){ ?>
     <div class="btn btn-danger btn-sm">Belum Dibayar</div>
-<?php }; ?></td>
+<?php }else{ ?>
+	<div class="btn btn-danger btn-sm">Menunggu Diterima</div>
+<?php } ?>
+</td>
 
 </tr>
 <?php endforeach; ?>

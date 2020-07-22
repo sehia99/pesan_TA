@@ -19,7 +19,9 @@ class Invoice extends CI_Controller{
         $date = new DateTime("now");
         $cur_date = $date->format('Y-m-d');
         $cur_time = date('Y-m-d H:i:s');
-        $where = array('DATE(tgl_pesan)' => $cur_date);
+        $where = array('DATE(tgl_pesan)' => $cur_date,
+                        'status !=' => 'batal'
+    );
         $order = array('id' => 'DESC');
         $data['invoice'] = $this->model_invoice->tampil_data($where, $order);
         //$data['id_komplain']=$this->model_invoice->ambil_id_komplain($id_invoice);
@@ -40,11 +42,25 @@ class Invoice extends CI_Controller{
         $this->load->view('templates_admin/footer');
     }
 
+    public function confirm_pesanan($id_invoice)
+    {
+        $where = array('id' => $id_invoice);
+        $data = array('status' => 'pesanan_confirm');
+        $this->model_invoice->confirm_bayar($where, $data, 'tb_invoice');
+        $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Pesanan Berhasil Di konfirmasi !</strong>
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>');
+        redirect('admin/invoice/index');
+    }
+
     public function confirm_bayar(){
         $id_invoice = $this->input->post('id');
         $estimasi = $this->input->post('estimasi');
-       $where = array('id' =>$id_invoice);
-        $data= array('confirm' => 'confirm',
+        $where = array('id' =>$id_invoice);
+        $data= array('status' => 'bayar_confirm',
                     'estimasi' => $estimasi,
                     'batas_bayar' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d')+1, date('Y')))
     );
@@ -61,11 +77,31 @@ class Invoice extends CI_Controller{
     public function kirim_pesanan($id){
         $where = array('id' => $id);
         $data = array(
-        'proses' => 'dikirim'
+        'status' => 'dikirim'
     );
         $this->model_invoice->confirm_bayar($where, $data, 'tb_invoice');
         $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Pesanan Selesai !</strong>
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>');
+        redirect('admin/invoice');
+    }
+
+    public function gagal_bayar($id)
+    {
+        $where = array(
+            'id' => $id
+        );
+        $data = array(
+            'status' => 'bayar_ditolak'
+        );
+        $where_b = array('id_invoice' => $id );
+        $this->model_invoice->confirm_bayar($where, $data, 'tb_invoice');
+        $this->model_invoice->tolak_bayar($where_b , 'tb_pembayaran');
+         $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Pembayaran Ditolak !</strong>
             <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

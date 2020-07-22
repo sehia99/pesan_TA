@@ -13,15 +13,15 @@
 <?php 
 $total = 0;
 foreach($pesanan as $pesanan) :
-    $subtotal = $pesanan->jumlah * $pesanan->harga;
-    $total +=$subtotal;
+    
+    $total +=$pesanan->subtotal;
 ?>
 <tr>
 <td><?php echo $pesanan->id_makmin ?></td>
 <td><?php echo $pesanan->nama_makmin ?></td>
 <td><?php echo $pesanan->jumlah ?></td>
 <td align="right">Rp. <?php echo number_format($pesanan->harga, 0,',','.') ?></td>
-<td align="right">Rp. <?php echo number_format($subtotal, 0,',','.') ?></td>
+<td align="right">Rp. <?php echo number_format($pesanan->subtotal, 0,',','.') ?></td>
 </tr>
 
 <?php endforeach; ?>
@@ -43,7 +43,7 @@ foreach($pesanan as $pesanan) :
 <td>Tidak Ada Komplain</td></tr>
 <?php }; ?>
 <?php if($cek == FALSE){ ?>
-    <div class="btn btn-sm btn-danger mb-3">Pesanan Belum Dibayar</div>
+   <!-- <div class="btn btn-sm btn-danger mb-3">Pesanan Belum Dibayar</div> -->
 <?php }else{foreach($pembayaran as $byr) : ?>
 <tr>
 <td>Confirmasi Pembayaran</td>
@@ -70,21 +70,27 @@ foreach($pesanan as $pesanan) :
     
 </table>
 <div class="row">
-<a href="<?php echo base_url('admin/invoice/index') ?>"><div class="btn btn-sm btn-secondary">Kembali</div></a>
+<a href="<?php echo base_url('admin/invoice/index') ?>"><div class="btn btn-sm btn-secondary">Kembali</div></a> 
 
-<?php if($cek == FALSE){ ?>
-<?php }elseif($invoice->proses == 'dikirim'){?>
-<div class="btn btn-sm btn-success ml-3">Pesanan Selesai</div>    
-<?php }elseif($invoice->confirm == 'confirm'){?>
+<?php if($invoice->komplain == 'Ya'){ ?>
+<a href="<?php echo base_url('admin/invoice/kirim_pesanan/').$invoice->id ?>"><div class="ml-2 btn btn-sm btn-primary">Kirim Pesanan</div></a>
+<?php }elseif($invoice->status == 'diterima'){ ?>
+<div class="btn btn-sm btn-success ml-2"> Pesanan Selesai </div>
+<?php }elseif($invoice->status == 'dikirim'){?>
+<div class="btn btn-sm btn-success ml-3">Menunggu Konfirmasi Pelanggan</div>    
+<?php }elseif($invoice->status == 'bayar_confirm'){?>
 <div class="ml-2 btn btn-sm btn-success">Pembayaran Telah Dikonfirmasi, Silahkan Buat Pesanan!</div>
 <a href="<?php echo base_url('admin/invoice/kirim_pesanan/').$invoice->id ?>"><div class="ml-2 btn btn-sm btn-primary">Kirim Pesanan</div></a>
-<?php }else{?>
+<?php }elseif($invoice->status == 'dibayar'){?>
+<a href="<?php echo base_url('admin/invoice/gagal_bayar/').$invoice->id ?>"><button class="btn btn-sm btn-danger ml-2">Tolak Pembayaran</button></a>
 <form class="ml-3" action="<?php echo base_url('admin/invoice/confirm_bayar') ?>" method="post">
 <input type="hidden" name="id" value="<?php echo $invoice->id ?>">
 <input type="text" name="estimasi" placeholder ="Waktu Estimasi Selesai" class="form-control mb-2" required>
 <button class="btn btn-success btn-sm " type="submit">Confirmasi Pembayaran</button>
 </form>
-<?php };?>
+<?php }elseif($invoice->status == 'dipesan'){?>
+<a href="<?php echo base_url('admin/invoice/confirm_pesanan/').$invoice->id ?>" class="btn btn-sm btn-primary ml-2">Terima Pesanan</a>
+<?php } ?>
 </div>
 </div>
 

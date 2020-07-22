@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <td>Alamat</td>
-                <td><strong><?php echo $user->alamat ?></strong></td>
+                <td><strong><?php echo $user->alamat,', ', $user->nama_prov,', ', $user->nama_kab,', ', $user->nama_kec,', ', $user->nama_des ?></strong></td>
             </tr>
             </table>
             <?php echo anchor('user/profil/edit/'.$user->id, '<div class="btn btn-primary btn-sm">Edit Profil</div>') ?>

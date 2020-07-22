@@ -26,7 +26,7 @@
         <label>Bukti Pengiriman</label>
         <input type="file" name="gambar" class="form-control">
     </div>    
-    <?php echo anchor('user/pesanan/detail_pesanan', '<div class="btn btn-danger btn-sm">Kembali </div>') ?>
+    <?php echo anchor('user/pesanan/detail/'.$id_invoice->id, '<div class="btn btn-danger btn-sm">Kembali </div>') ?>
     <div class="btn btn-success btn-sm" data-toggle="modal" data-target="#confirmModal">Confirm</div>
    
     <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -35,6 +35,11 @@
     <?php echo form_error('harga', '<div class="text-danger small ml-2">*','</div>') ?>
     </div>
     
+    <div class="form-group">
+    <label>Stok</label>
+    <input type="number" name="stok" class="form-control" value="<?php echo $makmin->stok; ?>">
+    <?php echo form_error('stok', '<div class="text-danger small ml-2">*','</div>') ?>
+    </div>
     <?php echo anchor('admin/data_makmin/index', '<div class="btn btn-sm btn-danger mt-3">Kembali</div>') ?>
     <button type="submit" class="btn btn-primary btn-sm mt-3 ml-2">Simpan</button>
 </form>

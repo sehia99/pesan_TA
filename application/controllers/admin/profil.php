@@ -24,7 +24,9 @@ class Profil extends CI_Controller{
     }
 
     public function edit($id){
-        $where = array('id' => $id);
+        $where = array('tb_user.id' => $id);
+        $get_prov = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_provinsi')->get();
+        $data['provinsi'] = $get_prov->result();
         $data['user'] = $this->model_admin->edit($where, 'tb_user')->result();
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -45,9 +47,11 @@ class Profil extends CI_Controller{
             'required' => 'Email Tidak Boleh Kosong!',
             
         ]);
-        $this->form_validation->set_rules('no_tlp', 'No.Tlp', 'required|is_natural',[
+        $this->form_validation->set_rules('no_tlp', 'No.Tlp', 'required|is_natural|min_length[10]|max_length[13]',[
             'required' => 'No. Telephone Tidak Boleh Kosong!',
-            'is_natural'   => 'Hanya Boleh Menggunakan Angka'
+            'is_natural'   => 'Hanya Boleh Menggunakan Angka',
+            'min_length' => 'Tidak Boleh Kurang dari 10',
+            'max_length' => 'Tidak Boleh lebih dari 13'
         ]);
         $this->form_validation->set_rules('alamat', 'Alamat', 'required',[
             'required' => 'Alamat Tidak Boleh Kosong!'
@@ -63,13 +67,21 @@ class Profil extends CI_Controller{
             $no_tlp      =$this->input->post('no_tlp');
             $alamat      =$this->input->post('alamat');
             $role_id     =$this->input->post('role_id');
+             $prov        =$this->input->post('prov');
+            $kab         =$this->input->post('kab');
+            $kec         =$this->input->post('kec');
+            $des         =$this->input->post('des');
             $data = array(
                 'nama'  =>$nama,
                 'username'  =>$username,
                 'email'     =>$email,
                 'no_tlp'    =>$no_tlp,
                 'alamat'    =>$alamat,
-                'role_id'   =>$role_id
+                'role_id'   =>$role_id,
+                'prov'      =>$prov,
+                'kab'       =>$kab,
+                'kec'       =>$kec,
+                'des'       =>$des
             );
     
             $where = array ('id' => $id);
@@ -83,8 +95,10 @@ class Profil extends CI_Controller{
             redirect('admin/profil');
             
         }else{
-            $where = array('id' => $id);
-            $data['user'] = $this->model_admin->edit($where, 'tb_user')->result();
+            $where = array('tb_user.id' => $id);
+        $get_prov = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_provinsi')->get();
+        $data['provinsi'] = $get_prov->result();
+         $data['user'] = $this->model_admin->edit($where, 'tb_user')->result();
             $this->load->view('templates_admin/header');
             $this->load->view('templates_admin/sidebar');
             $this->load->view('admin/edit_profil', $data);
