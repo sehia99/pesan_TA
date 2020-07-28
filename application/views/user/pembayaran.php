@@ -1,9 +1,9 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
-<div class="row">
-<div class="col-md-2"></div>
-<div class="col-md-8">
-<h3 align="center">Pembayaran</h3>
+<div class="card">
+
+<h3 class="card-header" >Pembayaran</h3>
+<div class="card-body">
 <form action="<?php echo base_url('user/pembayaran/proses_bayar') ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
      <label>Metode Bayar</label>
@@ -47,7 +47,8 @@
     </div>
   </div>
 </form>
+
 </div>
-<div class="col-md-2"></div>
+</div>
 </div>
 </div>

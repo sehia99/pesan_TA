@@ -34,9 +34,9 @@
                   
                   <?php echo form_error('alamat', '<div class="text-danger small ml-2">*','</div>') ?>
                 </div>
-                <div class="form-group">
-                  <select name="prov" class="form-control" id="provinsi" >
-                  <option>- Select Provinsi -</option>
+                <!--<div class="form-group">
+                  <select name="prov" class="form-control" id="provinsi" required type="hidden">
+                  <option disabled selected value>- Select Provinsi -</option>
                   <?php 
                     foreach($provinsi as $prov)
                     {
@@ -44,23 +44,30 @@
                     }
                   ?>
                 </select>     
-                </div>
+                </div> -->
+                <input type="hidden" name="prov" value="33">
                 <div class="form-group">
 
-                            <select name="kab" class="form-control" id="kabupaten">
-                  <option value=''>Select Kabupaten</option>
+                            <select name="kab" class="form-control" id="kabupaten" required>
+                  <option  disabled selected value>Select Kabupaten</option>
+                  <?php 
+                    foreach($kabupaten as $kab)
+                    {
+                      echo '<option value="'.$kab->id.'">'.$kab->nama.'</option>';
+                    }
+                  ?>
                 </select>
                       
                 </div>
                 <div class="form-group">
-                  <select name="kec" class="form-control" id="kecamatan">
-                <option>Select Kecamatan</option>
+                  <select name="kec" class="form-control" id="kecamatan" required>
+                <option disabled selected value>Select Kecamatan</option>
               </select>
                         
                 </div>
                 <div class="form-group">
-                  <select name="des" class="form-control" id="desa">
-                <option>Select Desa</option>
+                  <select name="des" class="form-control" id="desa" required>
+                <option disabled selected value>Select Desa</option>
               </select>
                 </div>
                 <div class="form-group row">
@@ -71,6 +78,7 @@
                   <div class="col-sm-6">
                     <input type="password" name="password_2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
                   </div>
+                  <input type="hidden" name="role_id" value="2">
                 </div>
                 <button class="btn btn-primary btn-user btn-block" type="submit">Daftar</button>
               </form>

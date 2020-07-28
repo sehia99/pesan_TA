@@ -35,9 +35,19 @@ class Welcome extends CI_Controller {
 	}
 
 	public function testing(){
-		date_default_timezone_set('Asia/Jakarta');
+		if($this->input->post('btnKirim')){
+			$paket = $this->input->post();
+			//kita bisa cetak ada variabel apa saja yang dikirimkan form
+			echo '<pre>';
+			print_r($paket);
+			echo '</pre>';
+			//kita urai masing-masing variabel post
+			$no_id	= $this->input->get('no_id');
+			$nama	= $this->input->get('nama');
+			$alamat	= $this->input->get('alamat');
+			//dan seterusnya 
+		}
 		$this->load->view('testing');
-		$date = date('Y-m-d H:i:s');
-		echo $date;
+	
 	}
 }

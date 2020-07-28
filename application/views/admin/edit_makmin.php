@@ -1,5 +1,7 @@
 <div class="container-fluid">
-<h5><i class="fas fa-edit mb-3"></i>EDIT DATA MAKANAN/MINUMAN</h5>
+<div class="card">
+<h5 class="card-header"><i class="fas fa-edit mb-3"></i>EDIT DATA MAKANAN/MINUMAN</h5>
+<div class="card-body">
 <?php foreach($makmin as $makmin): ?>
 <form action="<?php echo base_url().'admin/data_makmin/update' ?>" method="post">
 
@@ -44,4 +46,6 @@
     <button type="submit" class="btn btn-primary btn-sm mt-3 ml-2">Simpan</button>
 </form>
 <?php endforeach; ?>
+</div>
+</div>
 </div>

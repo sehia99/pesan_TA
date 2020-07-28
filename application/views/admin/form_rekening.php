@@ -1,6 +1,8 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
-<h5>TAMBAH REKENING</h5>
+<div class="card">
+<h5 class="card-header">TAMBAH REKENING</h5>
+<div class="card-body">
 <form id="tambah_makmin_form" action="<?php echo base_url().'admin/rekening/tambah_aksi';  ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label>Nama</label>
@@ -20,5 +22,6 @@
      <a href="<?php echo base_url('admin/rekening/index'); ?>"><button type="button" class="btn btn-secondary">Kembali</button></a>
      <button type="submit" class="btn btn-primary" >Save</button>
     </form>
-
+</div>
+</div>
 </div>

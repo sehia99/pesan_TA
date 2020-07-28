@@ -1,6 +1,8 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
-<h5>EDIT REKENING</h5>
+<div class="card">
+<h5 class="card-header">EDIT REKENING</h5>
+<div class="card-body">
 <?php foreach($rek as $rek): ?>
 <form id="tambah_makmin_form" action="<?php echo base_url().'/admin/rekening/update';  ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
@@ -23,4 +25,6 @@
      <button type="submit" class="btn btn-primary" >Save</button>
     </form>
 <?php endforeach; ?>
+</div>
+</div>
 </div>

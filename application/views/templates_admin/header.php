@@ -30,7 +30,7 @@
   <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo.js"></script>
   <script src="<?php echo base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
   
-  
+   
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
   <script src="<?php echo base_url()?>assets/vendor/datatables/dataTables.bootstrap4.js"></script>

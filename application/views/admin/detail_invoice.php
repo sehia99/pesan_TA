@@ -1,7 +1,8 @@
 <div class="container-fluid mb-3">
 <?php echo $this->session->flashdata('pesan'); ?>
-<h4>Detail Pesanan <div class="btn btn-sm btn-success">No. Invoice: <?php echo $invoice->id; ?></div></h4>
-
+<div class="card">
+<h4 class="card-header">Detail Pesanan <div class="btn btn-sm btn-success">No. Invoice: <?php echo $invoice->id; ?></div></h4>
+<div class="card-body">
 <table class="table table-bordered table-hover table-striped">
 <tr>
 <th>NO</th>
@@ -81,16 +82,22 @@ foreach($pesanan as $pesanan) :
 <?php }elseif($invoice->status == 'bayar_confirm'){?>
 <div class="ml-2 btn btn-sm btn-success">Pembayaran Telah Dikonfirmasi, Silahkan Buat Pesanan!</div>
 <a href="<?php echo base_url('admin/invoice/kirim_pesanan/').$invoice->id ?>"><div class="ml-2 btn btn-sm btn-primary">Kirim Pesanan</div></a>
+<?php }elseif($invoice->status == 'bayar_ditolak'){ ?>
+<div class="btn btn-sm btn-success">Menunggu Pembayaran</div>
 <?php }elseif($invoice->status == 'dibayar'){?>
 <a href="<?php echo base_url('admin/invoice/gagal_bayar/').$invoice->id ?>"><button class="btn btn-sm btn-danger ml-2">Tolak Pembayaran</button></a>
 <form class="ml-3" action="<?php echo base_url('admin/invoice/confirm_bayar') ?>" method="post">
 <input type="hidden" name="id" value="<?php echo $invoice->id ?>">
 <input type="text" name="estimasi" placeholder ="Waktu Estimasi Selesai" class="form-control mb-2" required>
-<button class="btn btn-success btn-sm " type="submit">Confirmasi Pembayaran</button>
+<button class="btn btn-success btn-sm " type="submit">Konfirmasi Pembayaran</button>
 </form>
+<?php }elseif($invoice->status == 'pesanan_confirm'){ ?>
+<div class="btn btn-sm btn-success">Menunggu Pembayaran</div>
 <?php }elseif($invoice->status == 'dipesan'){?>
 <a href="<?php echo base_url('admin/invoice/confirm_pesanan/').$invoice->id ?>" class="btn btn-sm btn-primary ml-2">Terima Pesanan</a>
 <?php } ?>
+</div>
+</div>
 </div>
 </div>
 

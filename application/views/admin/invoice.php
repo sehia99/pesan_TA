@@ -1,11 +1,14 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
-<h4>Invoice Pemesanan Makanan </h4>
+<div class="card">
+<h4 class="card-header">Invoice Pemesanan Makanan </h4>
+<div class="card-body">
 <table class="table table-bordered table-hover table-striped">
 <tr>
 <th>Id Invoice</th>
 <th>Nama Pemesan</th>
 <th>Alamat Pengiriman</th>
+<th>No. HP</th>
 <th>Batas Pembayaran</th>
 <th colspan="2">Aksi</th>
 </tr>
@@ -16,6 +19,7 @@
 <td><?php echo $invoice->id; ?></td>
 <td><?php echo $invoice->nama; ?></td>
 <td><?php echo $invoice->alamat,', ', $invoice->nama_prov,', ', $invoice->nama_kab,', ', $invoice->nama_kec,', ', $invoice->nama_des; ?></td>
+<td><?php echo $invoice->no_tlp ?></td>
 <td><?php echo $invoice->batas_bayar; ?></td>
 <td><?php echo anchor('admin/invoice/detail/'.$invoice->id, '<div class="btn btn-sm btn-primary">Detail</div>'); ?></td>
 <?php if($invoice->komplain != NULL){ ?>
@@ -43,4 +47,6 @@
 </tr>
 <?php };?>
 </table>
+</div>
+</div>
 </div>

@@ -50,8 +50,10 @@
 
         public function detail_keranjang(){
              $username = $this->session->userdata('username');
-             $get_prov = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_provinsi')->get();
-        $data['provinsi'] = $get_prov->result(); 
+             //$get_prov = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_provinsi')->get();
+        $get_kab = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_kabupaten')->where('provinsi_id', '33')->get();    
+        //$data['provinsi'] = $get_prov->result();  
+        $data['kabupaten'] = $get_kab->result(); 
         $data['user'] = $this->model_user->profil($username);
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');

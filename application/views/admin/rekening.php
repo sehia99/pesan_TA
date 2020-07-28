@@ -1,5 +1,8 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
+<div class="card">
+<h5 class="card-header">DATA REKENING</h5>
+<div class="card-body">
 <a href="<?php echo base_url('admin/rekening/form_rekening'); ?>"><button class="btn btn-sm btn-primary mb-3" ><i class="fas fa-plus fa-sm"></i> Tambah Rekening</button></a>
 
 <table class="table table-bordered">
@@ -27,7 +30,8 @@
     <?php }; ?>
 </table>
 </div>
-
+</div>
+</div>
 <div class="modal fade" id="tambah_makmin" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel">
     <div class="modal-dialog" role="document">
     <div class="modal-content">

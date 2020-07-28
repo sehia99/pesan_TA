@@ -36,7 +36,7 @@ foreach($this->cart->contents() as $item):
 <div class="form-group col-md-6">
 	<label>Alamat Tujuan</label>
 	<input type="text" name="alamat" class="form-control" value="<?php echo $user->alamat ?>">
-	<select name="prov" class="form-control" id="provinsi" >
+	<!--<select name="prov" class="form-control" id="provinsi" >
                   <option value="<?php echo $user->prov ?>"><?php echo $user->nama_prov ?></option>
                   <?php 
                     foreach($provinsi as $prov)
@@ -44,14 +44,18 @@ foreach($this->cart->contents() as $item):
                       echo '<option value="'.$prov->id.'">'.$prov->nama.'</option>';
                     }
                   ?>
-                </select>
-                 <select name="kab" class="form-control" id="kabupaten">
+                </select> -->
+                <input type="hidden" name="prov" value="33">
+                 <select name="kab" class="form-control" id="kabupaten" required>
                   <option value="<?php echo $user->kab ?>"><?php echo $user->nama_kab ?></option>
+                  <?php foreach($kabupaten as $kab)
+                    echo '<option value="'.$kab->id.'">'.$kab->nama.'</option>';
+                   ?>
                 </select>
-                <select name="kec" class="form-control" id="kecamatan">
+                <select name="kec" class="form-control" id="kecamatan" required>
                 <option value="<?php echo $user->kec ?>"><?php echo $user->nama_kec ?></option>
               </select>
-              <select name="des" class="form-control" id="desa">
+              <select name="des" class="form-control" id="desa" required>
                 <option value="<?php echo $user->des ?>"><?php echo $user->nama_des ?></option>
               </select>   
 </div>

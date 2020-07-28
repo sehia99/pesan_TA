@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22 Jul 2020 pada 12.53
+-- Generation Time: 28 Jul 2020 pada 17.48
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -39,8 +39,6 @@ CREATE TABLE `tb_invoice` (
   `des` varchar(10) NOT NULL,
   `no_tlp` varchar(20) NOT NULL,
   `status` varchar(15) NOT NULL DEFAULT 'dipesan',
-  `confirm` varchar(20) NOT NULL DEFAULT 'belum bayar',
-  `proses` varchar(50) NOT NULL,
   `komplain` varchar(50) NOT NULL,
   `estimasi` varchar(50) NOT NULL,
   `tgl_pesan` datetime NOT NULL,
@@ -51,73 +49,78 @@ CREATE TABLE `tb_invoice` (
 -- Dumping data untuk tabel `tb_invoice`
 --
 
-INSERT INTO `tb_invoice` (`id`, `username`, `nama`, `alamat`, `prov`, `kab`, `kec`, `des`, `no_tlp`, `status`, `confirm`, `proses`, `komplain`, `estimasi`, `tgl_pesan`, `batas_bayar`) VALUES
-(1, '', 'mamang', 'Ketanggungan, Brebes', '', '', '', '', '', 'dipesan', 'belum bayar', '', '', '', '2020-06-13 22:19:11', '2020-06-14 22:19:11'),
-(2, '', 'maymay', 'Ketanggungan, Brebes', '', '', '', '', '', 'dipesan', 'belum bayar', '', '', '', '2020-06-14 18:42:07', '2020-06-15 18:42:07'),
-(3, '', '', '', '', '', '', '', '', 'dipesan', 'belum bayar', '', '', '', '2020-06-14 21:02:06', '2020-06-15 21:02:06'),
-(4, 'mawan', 'mawan', 'Ketanggungan, Brebes', '', '', '', '', '', 'batal', 'belum bayar', '', '', '', '2020-06-16 21:31:38', '2020-06-17 21:31:38'),
-(5, 'mawan', 'mawan', 'Ketanggungan, Brebes', '', '', '', '', '', 'dipesan', 'confirm', '', '', '', '2020-06-16 21:32:38', '2020-06-17 21:32:38'),
-(6, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'confirm', 'dikirim', '', '15', '2020-06-16 22:22:10', '2020-06-17 03:22:10'),
-(7, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'confirm', '', '', '', '2020-06-18 23:27:28', '2020-06-19 04:27:28'),
-(8, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'belum bayar', '', '', '', '2020-06-28 18:26:20', '2020-06-28 23:26:20'),
-(9, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'belum bayar', '', '', '', '2020-06-28 18:28:15', '2020-06-28 23:28:15'),
-(10, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'belum bayar', '', '', '', '2020-06-28 18:29:00', '2020-06-28 23:29:00'),
-(11, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'belum bayar', '', '', '', '2020-06-28 18:29:58', '2020-06-28 23:29:58'),
-(12, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'belum bayar', '', '', '', '2020-06-28 18:30:01', '2020-06-28 23:30:01'),
-(13, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', 'belum bayar', '', '', '', '2020-07-02 14:06:54', '2020-07-02 19:06:54'),
-(14, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-08 16:19:41', '2020-07-08 21:19:41'),
-(15, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', 'dikirim', '', '3 Jam', '2020-07-08 20:55:43', '2020-07-09 01:55:43'),
-(16, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', 'dikirim', '', '4 jam', '2020-07-08 23:15:22', '2020-07-09 04:15:22'),
-(17, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'batal', 'belum bayar', '', '', '', '2020-07-09 12:35:02', '2020-07-09 17:35:02'),
-(18, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'dibayar', '', '', '', '2020-07-09 13:00:40', '2020-07-09 18:00:40'),
-(19, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', '', '', '3 Jam', '2020-07-09 13:04:58', '2020-07-10 08:05:45'),
-(20, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', 'dikirim', '', '3 jam', '2020-07-09 15:37:34', '2020-07-10 10:38:44'),
-(21, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-09 23:38:45', '2020-07-10 04:38:45'),
-(22, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', 'dikirim', '', '2 jam', '2020-07-10 11:22:08', '2020-07-11 06:23:09'),
-(23, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', '', 'Ya', '3 jam', '2020-07-10 14:27:38', '2020-07-11 09:33:06'),
-(24, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', '', '', '3 jam', '2020-07-10 15:38:40', '2020-07-11 10:42:28'),
-(25, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', 'confirm', 'dikirim', '', '3 jam', '2020-07-10 15:45:19', '2020-07-11 10:45:50'),
-(26, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', 'confirm', 'dikirim', 'Ya', ' 3 jam', '2020-07-10 15:46:25', '2020-07-11 10:46:57'),
-(27, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', '', '', '3 jam', '2020-07-12 17:47:20', '2020-07-13 12:51:16'),
-(28, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'batal', 'belum bayar', '', '', '', '2020-07-12 17:47:36', '2020-07-12 22:47:36'),
-(29, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', 'dikirim', '', '3 jam', '2020-07-12 17:47:53', '2020-07-13 12:51:55'),
-(30, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'confirm', 'komplain', 'Ya', '3 jam', '2020-07-12 17:48:10', '2020-07-13 12:52:22'),
-(31, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-12 17:49:29', '2020-07-12 22:49:29'),
-(32, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'dibayar', '', '', '', '2020-07-16 22:15:29', '2020-07-17 03:15:29'),
-(33, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 07:17:57', '2020-07-20 12:17:57'),
-(34, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'batal', 'ditolak', '', '', '', '2020-07-20 07:25:18', '2020-07-20 12:25:18'),
-(35, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', 'confirm', 'dikirim', 'Ya', '3 jam', '2020-07-20 10:09:53', '2020-07-21 05:12:36'),
-(36, 'budidarmawan1', 'Budi Darmawan123', 'Tegal Jalan Mataram', '', '', '', '', '08', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 10:35:08', '2020-07-20 15:35:08'),
-(37, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 11:02:23', '2020-07-20 16:02:23'),
-(38, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:17:24', '2020-07-21 02:17:24'),
-(39, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:22:29', '2020-07-21 02:22:29'),
-(40, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:25:30', '2020-07-21 02:25:30'),
-(41, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:27:48', '2020-07-21 02:27:48'),
-(42, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:35:46', '2020-07-21 02:35:46'),
-(43, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:40:48', '2020-07-21 02:40:48'),
-(44, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:41:53', '2020-07-21 02:41:53'),
-(45, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:42:07', '2020-07-21 02:42:07'),
-(46, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:42:26', '2020-07-21 02:42:26'),
-(47, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:43:57', '2020-07-21 02:43:57'),
-(48, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:44:11', '2020-07-21 02:44:11'),
-(49, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:44:53', '2020-07-21 02:44:53'),
-(50, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:45:06', '2020-07-21 02:45:06'),
-(51, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-20 21:45:17', '2020-07-21 02:45:17'),
-(52, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-21 10:08:10', '2020-07-21 15:08:10'),
-(53, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-21 14:15:17', '2020-07-21 19:15:17'),
-(54, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-21 14:16:42', '2020-07-21 19:16:42'),
-(55, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-21 14:17:12', '2020-07-21 19:17:12'),
-(56, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-21 14:17:44', '2020-07-21 19:17:44'),
-(57, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', 'confirm', 'dikirim', '', '3 jam', '2020-07-21 17:53:22', '2020-07-22 12:54:20'),
-(58, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', 'confirm', 'dikirim', '', '1 jam', '2020-07-21 19:57:21', '2020-07-22 15:07:34'),
-(59, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080', '081225285120', 'dipesan', 'belum bayar', '', '', '', '2020-07-21 22:36:00', '2020-07-22 03:36:00'),
-(60, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'pesanan_confirm', 'belum bayar', '', '', '', '2020-07-22 14:43:43', '2020-07-22 19:43:43'),
-(61, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'dikirim', 'belum bayar', '', '', '1 jam', '2020-07-22 15:05:13', '2020-07-23 10:13:26'),
-(62, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'dibayar', 'belum bayar', '', '', '', '2020-07-22 16:17:03', '2020-07-22 21:17:03'),
-(63, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_confirm', 'belum bayar', '', '', '1 jam', '2020-07-22 17:07:36', '2020-07-23 12:10:41'),
-(64, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'komplain', 'belum bayar', '', 'Ya', '1 jam', '2020-07-22 17:07:55', '2020-07-23 12:12:30'),
-(65, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'diterima', 'belum bayar', '', '', '1 jam', '2020-07-22 17:08:23', '2020-07-23 12:12:45'),
-(66, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_ditolak', 'belum bayar', '', '', '', '2020-07-22 17:08:45', '2020-07-22 22:08:45');
+INSERT INTO `tb_invoice` (`id`, `username`, `nama`, `alamat`, `prov`, `kab`, `kec`, `des`, `no_tlp`, `status`, `komplain`, `estimasi`, `tgl_pesan`, `batas_bayar`) VALUES
+(1, '', 'mamang', 'Ketanggungan, Brebes', '', '', '', '', '', 'dipesan', '', '', '2020-06-13 22:19:11', '2020-06-14 22:19:11'),
+(2, '', 'maymay', 'Ketanggungan, Brebes', '', '', '', '', '', 'dipesan', '', '', '2020-06-14 18:42:07', '2020-06-15 18:42:07'),
+(3, '', '', '', '', '', '', '', '', 'dipesan', '', '', '2020-06-14 21:02:06', '2020-06-15 21:02:06'),
+(4, 'mawan', 'mawan', 'Ketanggungan, Brebes', '', '', '', '', '', 'batal', '', '', '2020-06-16 21:31:38', '2020-06-17 21:31:38'),
+(5, 'mawan', 'mawan', 'Ketanggungan, Brebes', '', '', '', '', '', 'dipesan', '', '', '2020-06-16 21:32:38', '2020-06-17 21:32:38'),
+(6, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '15', '2020-06-16 22:22:10', '2020-06-17 03:22:10'),
+(7, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '', '2020-06-18 23:27:28', '2020-06-19 04:27:28'),
+(8, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '', '2020-06-28 18:26:20', '2020-06-28 23:26:20'),
+(9, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '', '2020-06-28 18:28:15', '2020-06-28 23:28:15'),
+(10, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '', '2020-06-28 18:29:00', '2020-06-28 23:29:00'),
+(11, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '', '2020-06-28 18:29:58', '2020-06-28 23:29:58'),
+(12, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '', '2020-06-28 18:30:01', '2020-06-28 23:30:01'),
+(13, 'mawan', 'mawan', 'ketanggungan, brebes111', '', '', '', '', '123123111', 'dipesan', '', '', '2020-07-02 14:06:54', '2020-07-02 19:06:54'),
+(14, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-08 16:19:41', '2020-07-08 21:19:41'),
+(15, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '3 Jam', '2020-07-08 20:55:43', '2020-07-09 01:55:43'),
+(16, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '4 jam', '2020-07-08 23:15:22', '2020-07-09 04:15:22'),
+(17, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'batal', '', '', '2020-07-09 12:35:02', '2020-07-09 17:35:02'),
+(18, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-09 13:00:40', '2020-07-09 18:00:40'),
+(19, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '3 Jam', '2020-07-09 13:04:58', '2020-07-10 08:05:45'),
+(20, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '3 jam', '2020-07-09 15:37:34', '2020-07-10 10:38:44'),
+(21, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-09 23:38:45', '2020-07-10 04:38:45'),
+(22, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '2 jam', '2020-07-10 11:22:08', '2020-07-11 06:23:09'),
+(23, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'Ya', '3 jam', '2020-07-10 14:27:38', '2020-07-11 09:33:06'),
+(24, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '3 jam', '2020-07-10 15:38:40', '2020-07-11 10:42:28'),
+(25, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', '', '3 jam', '2020-07-10 15:45:19', '2020-07-11 10:45:50'),
+(26, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', 'Ya', ' 3 jam', '2020-07-10 15:46:25', '2020-07-11 10:46:57'),
+(27, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '3 jam', '2020-07-12 17:47:20', '2020-07-13 12:51:16'),
+(28, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'batal', '', '', '2020-07-12 17:47:36', '2020-07-12 22:47:36'),
+(29, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '3 jam', '2020-07-12 17:47:53', '2020-07-13 12:51:55'),
+(30, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', 'Ya', '3 jam', '2020-07-12 17:48:10', '2020-07-13 12:52:22'),
+(31, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-12 17:49:29', '2020-07-12 22:49:29'),
+(32, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-16 22:15:29', '2020-07-17 03:15:29'),
+(33, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 07:17:57', '2020-07-20 12:17:57'),
+(34, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'batal', '', '', '2020-07-20 07:25:18', '2020-07-20 12:25:18'),
+(35, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', 'Ya', '3 jam', '2020-07-20 10:09:53', '2020-07-21 05:12:36'),
+(36, 'budidarmawan1', 'Budi Darmawan123', 'Tegal Jalan Mataram', '', '', '', '', '08', 'dipesan', '', '', '2020-07-20 10:35:08', '2020-07-20 15:35:08'),
+(37, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 11:02:23', '2020-07-20 16:02:23'),
+(38, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:17:24', '2020-07-21 02:17:24'),
+(39, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:22:29', '2020-07-21 02:22:29'),
+(40, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:25:30', '2020-07-21 02:25:30'),
+(41, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:27:48', '2020-07-21 02:27:48'),
+(42, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:35:46', '2020-07-21 02:35:46'),
+(43, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:40:48', '2020-07-21 02:40:48'),
+(44, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:41:53', '2020-07-21 02:41:53'),
+(45, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:42:07', '2020-07-21 02:42:07'),
+(46, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:42:26', '2020-07-21 02:42:26'),
+(47, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:43:57', '2020-07-21 02:43:57'),
+(48, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:44:11', '2020-07-21 02:44:11'),
+(49, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:44:53', '2020-07-21 02:44:53'),
+(50, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:45:06', '2020-07-21 02:45:06'),
+(51, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-20 21:45:17', '2020-07-21 02:45:17'),
+(52, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-21 10:08:10', '2020-07-21 15:08:10'),
+(53, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-21 14:15:17', '2020-07-21 19:15:17'),
+(54, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-21 14:16:42', '2020-07-21 19:16:42'),
+(55, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-21 14:17:12', '2020-07-21 19:17:12'),
+(56, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'dipesan', '', '', '2020-07-21 14:17:44', '2020-07-21 19:17:44'),
+(57, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', '', '3 jam', '2020-07-21 17:53:22', '2020-07-22 12:54:20'),
+(58, 'mawan', 'mawan', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '081225285120', 'diterima', '', '1 jam', '2020-07-21 19:57:21', '2020-07-22 15:07:34'),
+(59, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080', '081225285120', 'dipesan', '', '', '2020-07-21 22:36:00', '2020-07-22 03:36:00'),
+(60, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'pesanan_confirm', '', '', '2020-07-22 14:43:43', '2020-07-22 19:43:43'),
+(61, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'dikirim', '', '1 jam', '2020-07-22 15:05:13', '2020-07-23 10:13:26'),
+(62, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'dibayar', '', '', '2020-07-22 16:17:03', '2020-07-22 21:17:03'),
+(63, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_confirm', '', '1 jam', '2020-07-22 17:07:36', '2020-07-23 12:10:41'),
+(64, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'komplain', 'Ya', '1 jam', '2020-07-22 17:07:55', '2020-07-23 12:12:30'),
+(65, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'diterima', '', '1 jam', '2020-07-22 17:08:23', '2020-07-23 12:12:45'),
+(66, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_ditolak', '', '', '2020-07-22 17:08:45', '2020-07-22 22:08:45'),
+(67, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_ditolak', '', '', '2020-07-23 18:48:41', '2020-07-23 23:48:41'),
+(68, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'pesanan_confirm', '', '', '2020-07-23 19:15:09', '2020-07-24 00:15:09'),
+(69, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'dipesan', '', '', '2020-07-27 14:28:39', '2020-07-27 19:28:39'),
+(70, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'pesanan_confirm', '', '', '2020-07-27 14:28:57', '2020-07-27 19:28:57'),
+(71, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_confirm', '', '1 jam', '2020-07-28 16:18:26', '2020-07-29 11:20:05');
 
 -- --------------------------------------------------------
 
@@ -164,16 +167,16 @@ CREATE TABLE `tb_makmin` (
 --
 
 INSERT INTO `tb_makmin` (`id_makmin`, `nama_makmin`, `keterangan`, `kategori`, `harga`, `stok`, `gambar`) VALUES
-(1, 'Gurame Bakar', 'Gurame Bakar Dengan Lalaban', 'Makanan', 40000, 2, 'gurame_bakar_goreng.jpg'),
+(1, 'Gurame Bakar', 'Gurame Bakar Dengan Lalaban', 'Makanan', 40000, 9, 'gurame_bakar_goreng.jpg'),
 (2, 'Entog Bakar', 'Entog Bakar Dengan Lalaban', 'Makanan', 25000, 0, 'entog_bakar_goreng.jpg'),
-(3, 'Es Jeruk Lemon', 'Paduan Es jeruk dengan tambahan lemon segar', 'Minuman', 10000, 1, 'es-jeruk.jpg'),
+(3, 'Es Jeruk Lemon', 'Paduan Es jeruk dengan tambahan lemon segar', 'Minuman', 10000, 0, 'es-jeruk.jpg'),
 (5, 'Bawal Goreng', 'Bawal Goreng Dengan Lalaban', 'Makanan', 30000, 0, 'bawal_goreng_bakar.jpeg'),
 (6, 'Nila Goreng', 'Nila Goreng Dengan Lalaban', 'Makanan', 25000, 5, 'nila_bakar_goreng.jpg'),
 (7, 'Patin Bakar', 'Patin Bakar Bumbu Spesial', 'Makanan', 30000, 5, 'patin_bakar_goreng.jpg'),
 (8, 'Ayam Bakar Rica Rica', 'Ayam Bakar Dengan Bumbu Rica-Rica', 'Makanan', 25000, 4, 'ayam_bakar_rica.jpg'),
 (9, 'Es Teh Manis', 'Es Teh Manis Yang Segar', 'Minuman', 5000, 9, 'es_teh.jpg'),
 (10, 'Bebek Bakar Rica Rica', 'Bebek Bakar Dengan Bumbu Rica-Rica', 'Makanan', 20000, 12, 'bebek_bakar_rica.jpg'),
-(11, 'Cumi Goreng Tepung', 'Cumi Goreng Dengan Baluran Tepung Krispi', 'Makanan', 25000, 7, 'cumi_goreng_tepung.jpg'),
+(11, 'Cumi Goreng Tepung', 'Cumi Goreng Dengan Baluran Tepung Krispi', 'Makanan', 25000, 4, 'cumi_goreng_tepung.jpg'),
 (12, 'Kepiting Saus Padang', 'Kepiting Dengan Baluran Saus Padang', 'Makanan', 40000, 6, 'kepiting_saus_tiram_padang.jpg'),
 (13, 'Sop Iga Sapi', 'Sop Iga Sapi Spesial', 'Makanan', 20000, 12, 'sop_iga_sapi.jpg'),
 (14, 'Soto Ayam', 'Soto Ayam Spesial', 'Makanan', 15000, 12, 'soto_babad.jpg'),
@@ -236,7 +239,8 @@ INSERT INTO `tb_pembayaran` (`id`, `id_invoice`, `nama_peng`, `no_peng`, `gambar
 (25, '62', 'budi darmawan', '1234567890', 'ayam_bakar_bali1.jpg', '2020-07-22 17:09:44'),
 (26, '63', 'budi darmawan', '1234567890', 'ayam_bakar_bali2.jpg', '2020-07-22 17:10:19'),
 (27, '64', 'budi darmawan', '1234567890', 'ayam_bakar_bali3.jpg', '2020-07-22 17:11:24'),
-(28, '65', 'budi darmawan', '1234567890', 'ayam_bakar_bali4.jpg', '2020-07-22 17:11:48');
+(28, '65', 'budi darmawan', '1234567890', 'ayam_bakar_bali4.jpg', '2020-07-22 17:11:48'),
+(31, '71', 'budi darmawan', '1234567890', 'default_profil5.jpg', '2020-07-28 16:19:43');
 
 -- --------------------------------------------------------
 
@@ -331,7 +335,12 @@ INSERT INTO `tb_pesanan` (`id_pesanan`, `id_invoice`, `id_makmin`, `username`, `
 (69, 63, 8, 'mawan', 'Ayam Bakar Rica Rica', 4, 25000, 100000),
 (70, 64, 11, 'mawan', 'Cumi Goreng Tepung', 5, 25000, 125000),
 (71, 65, 12, 'mawan', 'Kepiting Saus Padang', 6, 40000, 240000),
-(72, 66, 7, 'mawan', 'Patin Bakar', 3, 30000, 90000);
+(72, 66, 7, 'mawan', 'Patin Bakar', 3, 30000, 90000),
+(73, 67, 11, 'mawan', 'Cumi Goreng Tepung', 3, 25000, 75000),
+(74, 68, 1, 'mawan', 'Gurame Bakar', 4, 40000, 160000),
+(75, 70, 3, 'mawan', 'Es Jeruk Lemon', 1, 10000, 10000),
+(76, 70, 1, 'mawan', 'Gurame Bakar', 2, 40000, 80000),
+(77, 71, 1, 'mawan', 'Gurame Bakar', 5, 40000, 200000);
 
 -- --------------------------------------------------------
 
@@ -388,7 +397,8 @@ INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `email`, `no_tlp`, 
 (3, 'user', 'user', '202cb962ac59075b964b07152d234b70', 'admin@admin.com', '', '', '', '', '', '', '', 2, ''),
 (4, 'mawan', 'mawan', 'e8f8c6ab524211739e2f9731d7040698', 'budifitt3@gmail.com', '081225285120', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', 'default_profil3.jpg', 2, 'NwMhkxtubSCdi1jHoFmIB8V9yE7A4l0UKfZrDQ3GecTaXLnJRO'),
 (5, 'budidarmawan1', 'Budi Darmawan123', 'e8f8c6ab524211739e2f9731d7040698', 'budifitt4@gmail.com', '08', 'Ketanggungan, Brebes, Jawa Tengah', '', '', '', '', '', 2, ''),
-(6, 'user1', 'Budi Darmawan', 'e8f8c6ab524211739e2f9731d7040698', 'budifitt7@gmail.com', '123123123123', 'jl nursiyah', '33', '3329', '3329080', '3329080017', '', 2, '');
+(6, 'user1', 'Budi Darmawan', 'e8f8c6ab524211739e2f9731d7040698', 'budifitt7@gmail.com', '123123123123', 'jl nursiyah', '33', '3329', '3329080', '3329080017', '', 2, ''),
+(7, 'admin2', 'admin ke dua', 'e8f8c6ab524211739e2f9731d7040698', 'budifitt5@gmail.com', '123123123123', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '', 1, '');
 
 -- --------------------------------------------------------
 
@@ -87719,7 +87729,7 @@ ALTER TABLE `wilayah_provinsi`
 -- AUTO_INCREMENT for table `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `tb_komplain`
@@ -87737,13 +87747,13 @@ ALTER TABLE `tb_makmin`
 -- AUTO_INCREMENT for table `tb_pembayaran`
 --
 ALTER TABLE `tb_pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `tb_rekening`
@@ -87755,7 +87765,7 @@ ALTER TABLE `tb_rekening`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

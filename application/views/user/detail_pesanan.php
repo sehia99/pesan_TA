@@ -99,7 +99,7 @@ foreach($pesanan as $pesanan) :
     <div class="btn btn-success btn-sm">Pembayaran Dikonfirmasi, Pesanan Anda Akan Segera Datang</div>
     <?php }else{if($invoice->status == 'dibayar'){ ?>
     <div class="btn btn-success btn-sm" >Menunggu Konfirmasi</div>
-<?php }elseif($invoice->status == 'pesanan_confirm'){ ?>
+<?php }elseif($invoice->status == 'pesanan_confirm' || $invoice->status == 'bayar_ditolak'){ ?>
     <div class="btn btn-danger btn-sm" data-toggle="modal" data-target="#batalModal">Batal Pesan </div>
     <a href="<?php echo base_url('user/pembayaran/index/').$id_invoice->id ?>"><div class="btn btn-sm btn-success">Bayar</div></a>
 

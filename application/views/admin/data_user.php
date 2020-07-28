@@ -1,5 +1,8 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
+<div class="card">
+<h5 class="card-header">DATA USER</h5>
+<div class="card-body">
 <table class="table table-bordered">
 
 <tr>
@@ -22,4 +25,6 @@
 </tr>
 
 </table>
+</div>
+</div>
 </div>

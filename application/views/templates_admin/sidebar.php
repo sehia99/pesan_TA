@@ -59,7 +59,13 @@
         <a class="nav-link" href="<?php echo base_url('admin/rekening'); ?>">
           <i class="fas fa-fw fa-database"></i>
           <span>Rekening</span></a>
-      </li> 
+      </li>
+
+      <!--<li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/user'); ?>">
+          <i class="fas fa-fw fa-database"></i>
+          <span>User</span></a>
+      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -154,9 +160,9 @@
                 Dashboard
               </a>
               <?php }; ?>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="<?php echo base_url('admin/profil') ?>">
                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                Activity Log
+                Profil
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

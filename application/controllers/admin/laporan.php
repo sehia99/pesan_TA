@@ -29,6 +29,36 @@ class Laporan extends CI_Controller {
 		$this->load->view('templates_admin/footer');
 	}
 
+	public function pdf()
+	{
+	
+		$start = $this->input->post('start');
+		$end   = $this->input->post('end');
+
+		$where = array('status' => 'diterima');
+		$data['lap'] = $this->model_laporan->get_laporan($where, $start, $end);
+		$this->load->view('admin/pdf', $data);
+
+		$paper_size = 'A4';
+		$orientation = 'landscape';
+		$html = $this->output->get_output();
+
+		$this->dompdf->set_paper($paper_size, $orientation);
+		$this->dompdf->load_html($html);
+		$this->dompdf->render();
+		$this->dompdf->stream("Laporan_Penjualan.pdf", array('Attachment' => 0));
+	}
+
+	public function print()
+	{
+		$start = $this->input->post('start');
+		$end   = $this->input->post('end');
+
+		$where = array('status' => 'diterima');
+		$data['lap'] = $this->model_laporan->get_laporan($where, $start, $end);
+		$this->load->view('admin/print_laporan', $data);
+	}
+
 }
 
 /* End of file laporan.php */

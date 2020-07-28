@@ -1,6 +1,8 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
-<h4>Pesanan Anda </h4>
+<div class="card">
+<h4 class="card-header">Pesanan Anda </h4>
+<div class="card-body">
 <table class="table table-bordered table-hover table-striped">
 <tr>
 <th>Id Pesanan</th>
@@ -24,11 +26,11 @@
     <div class="btn btn-success btn-sm">Pesanan Sedang Dikirim</div>
 <?php }elseif($invoice->status == 'bayar_confirm'){ ?>
     <div class="btn btn-success btn-sm">Pesanan Sedang Di Siapkan!</div>
-<?php }elseif($invoice->status == 'ditolak'){ ?>
+<?php }elseif($invoice->status== 'bayar_ditolak'){ ?>
 	<div class="btn btn-danger btn-sm">Pembayaran Ditolak</div>
 <?php }elseif($invoice->status == 'dibayar'){ ?>
     <div class="btn btn-success btn-sm">Menunggu Konfirmasi</div>
-<?php }elseif($invoice->status == 'pesanan_confirm' || $invoice->status== 'bayar_ditolak'){ ?>
+<?php }elseif($invoice->status == 'pesanan_confirm'){ ?>
     <div class="btn btn-danger btn-sm">Belum Dibayar</div>
 <?php }else{ ?>
 	<div class="btn btn-danger btn-sm">Menunggu Diterima</div>
@@ -43,6 +45,8 @@
 </tr>
 <?php }; ?>
 </table>
+</div>
+</div>
 </div>
 
 

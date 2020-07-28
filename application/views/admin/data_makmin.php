@@ -1,5 +1,8 @@
 <div class="container-fluid">
 <?php echo $this->session->flashdata('pesan'); ?>
+<div class="card">
+<h5 class="card-header">DATA MAKANAN MINUMAN</h5>
+<div class="card-body">
 <a href="<?php echo base_url('admin/data_makmin/tambah_makmin'); ?>"><button class="btn btn-sm btn-primary mb-3" ><i class="fas fa-plus fa-sm"></i> Tambah Makanan/Minuman</button></a>
 
 <table class="table table-bordered" id="table">
@@ -30,6 +33,8 @@
     </tr>
 
 </table>
+</div>
+</div>
 </div>
 
 <div class="modal fade" id="tambah_makmin" tabindex="-1" role="dialog" aria-labelledby="examplemodallabel">

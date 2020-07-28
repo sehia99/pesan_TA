@@ -25,8 +25,10 @@ class Profil extends CI_Controller{
 
     public function edit($id){
         $where = array('tb_user.id' => $id);
-        $get_prov = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_provinsi')->get();
-        $data['provinsi'] = $get_prov->result();
+        //$get_prov = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_provinsi')->get();
+        $get_kab = $this->db->select('*')->order_by('nama', 'ASC')->from('wilayah_kabupaten')->where('provinsi_id', '33')->get();    
+        //$data['provinsi'] = $get_prov->result();  
+        $data['kabupaten'] = $get_kab->result(); 
         $data['user'] = $this->model_admin->edit($where, 'tb_user')->result();
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
