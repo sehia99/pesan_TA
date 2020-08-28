@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Jul 2020 pada 17.48
+-- Generation Time: 28 Agu 2020 pada 14.00
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -120,7 +120,8 @@ INSERT INTO `tb_invoice` (`id`, `username`, `nama`, `alamat`, `prov`, `kab`, `ke
 (68, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'pesanan_confirm', '', '', '2020-07-23 19:15:09', '2020-07-24 00:15:09'),
 (69, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'dipesan', '', '', '2020-07-27 14:28:39', '2020-07-27 19:28:39'),
 (70, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'pesanan_confirm', '', '', '2020-07-27 14:28:57', '2020-07-27 19:28:57'),
-(71, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_confirm', '', '1 jam', '2020-07-28 16:18:26', '2020-07-29 11:20:05');
+(71, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'bayar_confirm', '', '1 jam', '2020-07-28 16:18:26', '2020-07-29 11:20:05'),
+(72, 'mawan', 'mawan', 'jl. nursiyah', '33', '3329', '3329080', '3329080017', '081225285120', 'dipesan', '', '', '2020-07-28 23:17:03', '2020-07-29 04:17:03');
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,7 @@ CREATE TABLE `tb_makmin` (
 --
 
 INSERT INTO `tb_makmin` (`id_makmin`, `nama_makmin`, `keterangan`, `kategori`, `harga`, `stok`, `gambar`) VALUES
-(1, 'Gurame Bakar', 'Gurame Bakar Dengan Lalaban', 'Makanan', 40000, 9, 'gurame_bakar_goreng.jpg'),
+(1, 'Gurame Bakar', 'Gurame Bakar Dengan Lalaban', 'Makanan', 40000, 6, 'gurame_bakar_goreng.jpg'),
 (2, 'Entog Bakar', 'Entog Bakar Dengan Lalaban', 'Makanan', 25000, 0, 'entog_bakar_goreng.jpg'),
 (3, 'Es Jeruk Lemon', 'Paduan Es jeruk dengan tambahan lemon segar', 'Minuman', 10000, 0, 'es-jeruk.jpg'),
 (5, 'Bawal Goreng', 'Bawal Goreng Dengan Lalaban', 'Makanan', 30000, 0, 'bawal_goreng_bakar.jpeg'),
@@ -340,7 +341,8 @@ INSERT INTO `tb_pesanan` (`id_pesanan`, `id_invoice`, `id_makmin`, `username`, `
 (74, 68, 1, 'mawan', 'Gurame Bakar', 4, 40000, 160000),
 (75, 70, 3, 'mawan', 'Es Jeruk Lemon', 1, 10000, 10000),
 (76, 70, 1, 'mawan', 'Gurame Bakar', 2, 40000, 80000),
-(77, 71, 1, 'mawan', 'Gurame Bakar', 5, 40000, 200000);
+(77, 71, 1, 'mawan', 'Gurame Bakar', 5, 40000, 200000),
+(78, 72, 1, 'mawan', 'Gurame Bakar', 3, 40000, 120000);
 
 -- --------------------------------------------------------
 
@@ -87729,7 +87731,7 @@ ALTER TABLE `wilayah_provinsi`
 -- AUTO_INCREMENT for table `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `tb_komplain`
@@ -87753,7 +87755,7 @@ ALTER TABLE `tb_pembayaran`
 -- AUTO_INCREMENT for table `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `tb_rekening`
